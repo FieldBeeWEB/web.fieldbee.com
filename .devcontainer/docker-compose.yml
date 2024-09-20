@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  fieldbee:
+    env_file:
+      - ../.env
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: 18-bullseye
+
+    volumes:
+      - ..:/fieldbee:cached
+      - pnpm-store:/fieldbee/.pnpm-store
+      - root-node-modules:/fieldbee/node_modules
+      - web-node-modules:/fieldbee/apps/web/node_modules
+      - docs-node-modules:/fieldbee/apps/docs/node_modules
+      - ui-node-modules:/fieldbee/packages/ui/node_modules
+      - api-node-modules:/fieldbee/packages/api/node_modules
+      - eslint-config-node-modules:/fieldbee/packages/eslint-config-custom/node_modules
+      - tsconfig-node-modules:/fieldbee/packages/tsconfig/node_modules
+
+    command: sleep infinity
+    user: node
+
+volumes:
+  pnpm-store:
+  root-node-modules:
+  web-node-modules:
+  docs-node-modules:
+  ui-node-modules:
+  eslint-config-node-modules:
+  tsconfig-node-modules:
+  api-node-modules:

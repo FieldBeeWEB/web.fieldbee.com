@@ -1,0 +1,39 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fieldbee/api": "workspace:*",
+    "@fieldbee/ui": "workspace:*",
+    "@hookform/resolvers": "^3.0.0",
+    "date-fns": "^2.29.3",
+    "i18next": "^22.4.14",
+    "next": "^13.1.1",
+    "ol": "^7.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-hook-form": "^7.43.9",
+    "react-toastify": "^9.1.2",
+    "react-transition-group": "^4.4.5",
+    "uuid": "^9.0.0",
+    "yup": "^1.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@fieldbee/tsconfig": "workspace:*",
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@types/uuid": "^9.0.1",
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "typescript": "^4.5.3"
+  }
+}

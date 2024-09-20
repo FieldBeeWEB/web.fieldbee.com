@@ -1,0 +1,21 @@
+{
+  "name": "fieldbee",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "fieldbee",
+  "workspaceFolder": "/fieldbee",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+
+  "forwardPorts": [3000, 3001],
+  "remoteUser": "node",
+  "postCreateCommand": "sudo find /fieldbee -path /fieldbee/.git -prune -o -exec sudo chown node {} + && pnpm fetch && pnpm i --prefer-offline",
+  "shutdownAction": "stopCompose"
+}

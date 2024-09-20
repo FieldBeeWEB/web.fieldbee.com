@@ -1,0 +1,38 @@
+{
+  "name": "@fieldbee/ui",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "files": [
+    "index.tsx",
+    "icons.tsx",
+    "components.tsx",
+    "date-picker.tsx",
+    "data-grid.tsx"
+  ],
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint *.ts*"
+  },
+  "devDependencies": {
+    "@fieldbee/tsconfig": "workspace:*",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "react": "^18.2.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/lab": "5.0.0-alpha.127",
+    "@mui/material": "5.11.15",
+    "@mui/x-data-grid": "^6.2.0",
+    "@mui/x-date-pickers": "^6.1.0",
+    "react-hook-form": "^7.43.9",
+    "react-toastify": "^9.1.2"
+  }
+}

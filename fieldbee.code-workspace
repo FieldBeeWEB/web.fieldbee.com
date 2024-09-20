@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "path": "./apps/web",
+      "name": "web"
+    },
+    {
+      "path": "./apps/docs",
+      "name": "docs"
+    },
+    {
+      "path": "./packages",
+      "name": "packages"
+    }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": { "source.organizeImports": true },
+    "files.exclude": {
+      "**/dist": false
+    },
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.words": ["fieldbee"]
+  }
+}

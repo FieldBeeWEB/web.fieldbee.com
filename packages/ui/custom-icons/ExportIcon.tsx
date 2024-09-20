@@ -1,0 +1,24 @@
+import { SvgIcon, SvgIconProps } from "@mui/material";
+import * as React from "react";
+
+const ExportIcon: React.FunctionComponent<SvgIconProps> = (props) => (
+  <SvgIcon viewBox="0 0 32 33" {...props}>
+    <svg
+      width="32"
+      height="33"
+      viewBox="0 0 32 33"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="upload_file_FILL0_wght400_GRAD0_opsz48 1">
+        <path
+          id="Vector"
+          d="M15.0668 15.0339H17.0668V21.7339L19.8002 19.0005L21.2002 20.4005L16.0002 25.4672L10.8668 20.3339L12.2668 18.9339L15.0668 21.7339V15.0339ZM7.3335 29.5339C6.80016 29.5339 6.3335 29.3339 5.9335 28.9339C5.5335 28.5339 5.3335 28.0672 5.3335 27.5339V4.86719C5.3335 4.33385 5.5335 3.86719 5.9335 3.46719C6.3335 3.06719 6.80016 2.86719 7.3335 2.86719H19.3668L26.6668 10.1672V27.5339C26.6668 28.0672 26.4668 28.5339 26.0668 28.9339C25.6668 29.3339 25.2002 29.5339 24.6668 29.5339H7.3335ZM18.3668 11.0672V4.86719H7.3335V27.5339H24.6668V11.0672H18.3668Z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  </SvgIcon>
+);
+
+export default ExportIcon;
