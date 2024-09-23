@@ -10,6 +10,13 @@ module.exports = {
   modularizeImports: {
     "@fieldbee/ui/icons/?(((\\w*)?/?)*)": {
       transform: "@mui/icons-material/{{ matches.[1] }}/{{member}}",
-    }
-  }
+    },
+  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "api.fieldbee.com",
+      },
+    ],
+  },
 };

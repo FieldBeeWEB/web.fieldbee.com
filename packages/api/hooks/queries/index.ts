@@ -11,13 +11,13 @@ export { useGetOrganizationFieldsOperations } from "./use-get-field-operations";
 export type { FieldOperation } from "./use-get-field-operations";
 export {
   MeasurementType,
-  useGetMeasurementUnits
+  useGetMeasurementUnits,
 } from "./use-get-measurement-units";
 export type { MeasurementUnit, UmType } from "./use-get-measurement-units";
 export { useGetOrganizationField } from "./use-get-organization-field";
 export {
   SeasonType,
-  useGetOrganizationFields
+  useGetOrganizationFields,
 } from "./use-get-organization-fields";
 export type {
   Category,
@@ -28,8 +28,15 @@ export type {
   Operation,
   Progress,
   Season,
-  Task
+  Task,
 } from "./use-get-organization-fields";
+export type {
+  TaskProgress,
+  TasksResponse,
+  TaskField,
+  Worker,
+  WorkerProgress,
+} from "./use-get-tasks";
 export { useGetOrganizationFieldsCategories } from "./use-get-organization-fields-categories";
 export type { OrganizationFieldCategory } from "./use-get-organization-fields-categories";
 export { useGetOrganizationFieldsWithGeometry } from "./use-get-organization-fields-with-geometry";
@@ -37,4 +44,4 @@ export type { FieldWithGeometryResponse } from "./use-get-organization-fields-wi
 export { useGetProfile } from "./use-get-profile";
 export type { ProfileResponse } from "./use-get-profile";
 export { useGetSeasons } from "./use-get-seasons";
-export { useGetUserMeasureUnits } from './use-get-user-measure-units';
+export { useGetUserMeasureUnits } from "./use-get-user-measure-units";

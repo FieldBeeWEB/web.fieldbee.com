@@ -5,7 +5,7 @@ import {
   Loader,
   MapButton,
   MapButtons,
-  Stack
+  Stack,
 } from "@fieldbee/ui";
 import CollapsibleLayout from "@fieldbee/ui/collapsible-layout/collapsible-layout";
 import { IconButton, ListItemIcon, Tabs } from "@fieldbee/ui/components";
@@ -20,7 +20,7 @@ import {
   Print,
   SquareFoot,
   TabUnselectedOutlined,
-  TextSnippetOutlined
+  TextSnippetOutlined,
 } from "@fieldbee/ui/icons";
 import Tab from "@fieldbee/ui/Tab";
 import TabPanel from "@fieldbee/ui/TabPanel";
@@ -30,7 +30,7 @@ import * as React from "react";
 import { pagePaths } from "../../config/page-paths";
 import {
   PhrasesTranslationKeys,
-  SingleWordsTranslationKeys
+  SingleWordsTranslationKeys,
 } from "../../localization";
 import AuthedLayout from "../authed-layout";
 import BackgroundDownloadContext from "../background-download/background-download-context";
@@ -88,7 +88,7 @@ export default function Field() {
     setValue(newValue);
   };
   const { data: field, isLoading } = useGetOrganizationField(
-    uri?.toString() || ""
+    uri?.toString() || "",
   );
 
   if (isLoading) {
@@ -143,8 +143,8 @@ export default function Field() {
                           router.push(
                             pagePaths.authPages.editField(
                               field.id.toString(),
-                              field.uri
-                            )
+                              field.uri,
+                            ),
                           );
                         }}
                         key="edit"

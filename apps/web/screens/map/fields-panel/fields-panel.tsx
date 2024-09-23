@@ -34,12 +34,14 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
         handleSetCenterByBbox(field.bbox);
       }
     },
-    [handleSetCenterByBbox, setSelectedField]
+    [handleSetCenterByBbox, setSelectedField],
   );
 
   const filteredData =
     data &&
-    data.filter((x) => x.name.toLowerCase().includes(term.toLowerCase()));
+    data.filter(
+      (x) => x.name && x.name.toLowerCase().includes(term.toLowerCase()),
+    );
 
   const items = filteredData
     ? selectedGroup
@@ -54,7 +56,7 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
     : [];
 
   return (
-    <Stack overflow="scroll" spacing={1} padding={1}>
+    <Stack overflow="scroll" spacing={1} padding={1} height={"100%"}>
       {items.length > 0 ? (
         items.map((field) => (
           <SelectableBox
@@ -136,8 +138,8 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
                       router.push(
                         pagePaths.authPages.editField(
                           field.id.toString(),
-                          field.uri
-                        )
+                          field.uri,
+                        ),
                       );
                     }}
                     sx={{
@@ -154,8 +156,8 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
                       router.push(
                         pagePaths.authPages.field(
                           field.id.toString(),
-                          field.uri
-                        )
+                          field.uri,
+                        ),
                       );
                     }}
                     sx={{
@@ -170,7 +172,7 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
           </SelectableBox>
         ))
       ) : (
-        <Stack>
+        <Stack margin={"auto"} textAlign={"center"}>
           <Typography>
             There are no fields matching requested criteria.
           </Typography>

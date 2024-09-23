@@ -4,7 +4,7 @@ import {
   NavButton,
   Sidebar,
   SmallMenu,
-  Stack
+  Stack,
 } from "@fieldbee/ui";
 import { ListItemIcon, MenuItem, Typography } from "@fieldbee/ui/components";
 import AccountOutlinedIcon from "@fieldbee/ui/custom-icons/AccountOutlinedIcon";
@@ -18,9 +18,10 @@ import { pagePaths } from "../config/page-paths";
 import { getUserToken } from "../helpers/user-token";
 import {
   PhrasesTranslationKeys,
-  SingleWordsTranslationKeys
+  SingleWordsTranslationKeys,
 } from "../localization";
 import Settings from "./settings";
+import TasksIcon from "@fieldbee/ui/custom-icons/TasksIcon";
 
 export default function AuthedLayout({ children }: React.PropsWithChildren) {
   const router = useRouter();
@@ -44,6 +45,7 @@ export default function AuthedLayout({ children }: React.PropsWithChildren) {
   const [openSettings, setOpenSettings] = React.useState(false);
   const handleOpenSettings = () => setOpenSettings(true);
   const handleCloseSettings = () => setOpenSettings(false);
+
   return (
     <DashboardLayout>
       <Sidebar>
@@ -73,9 +75,20 @@ export default function AuthedLayout({ children }: React.PropsWithChildren) {
           >
             {t(SingleWordsTranslationKeys.Fields)}
           </NavButton>
+          <NavButton
+            startIcon={<TasksIcon />}
+            onClick={() => {
+              router.push(pagePaths.authPages.tasks);
+            }}
+            active={router.pathname.includes(pagePaths.authPages.tasks)}
+          >
+            {t(SingleWordsTranslationKeys.Tasks)}
+          </NavButton>
         </Stack>
         <Stack>
-          <Typography variant="caption">PoC v3.0</Typography>
+          <Typography variant="caption" textAlign={"center"}>
+            PoC v3.0
+          </Typography>
           <NavButton
             startIcon={<AccountOutlinedIcon />}
             onClick={handleClick}

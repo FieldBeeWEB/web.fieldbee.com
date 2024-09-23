@@ -70,7 +70,7 @@ export const PhrasesTranslationKeys = {
   LoginWithEmail: "login-with-email",
   CreateNewAccount: "create-new-account",
   SaveChanges: "save-changes",
-  AddNewCrop:"add-new-crop"
+  AddNewCrop: "add-new-crop",
 } as const;
 
 export type PhrasesTranslationKeys = keyof typeof PhrasesTranslationKeys;

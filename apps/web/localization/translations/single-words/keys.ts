@@ -3,6 +3,8 @@ export const SingleWordsTranslationKeys = {
   Login: "login",
   Map: "map",
   Fields: "fields",
+  Tasks: "tasks",
+  Task: "task",
   Settings: "settings",
   Email: "email",
   Or: "or",
@@ -44,7 +46,7 @@ export const SingleWordsTranslationKeys = {
   Store: "store",
   Filters: "filters",
   Details: "details",
-  Filter: "filter"
+  Filter: "filter",
 };
 
 export type SingleWordsTranslationKeys =

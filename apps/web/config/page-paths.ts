@@ -2,6 +2,7 @@ const authPages = {
   home: "/",
   profile: "/profile",
   fields: "/fields",
+  tasks: "/tasks",
   map: "/map",
   field: (id: string, uri: string) => `/fields/${id}?uri=${uri}`,
   importFields: "/import-fields",

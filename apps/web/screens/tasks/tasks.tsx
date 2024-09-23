@@ -1,39 +1,18 @@
-import { useGetOrganizationFields } from "@fieldbee/api";
-import { InputWithIcon, Loader } from "@fieldbee/ui";
-import { Box, Grid, Stack } from "@fieldbee/ui/components";
-import { Search, TabUnselected, Upload } from "@fieldbee/ui/icons";
-import { useRouter } from "next/router";
-import * as React from "react";
 import AuthedLayout from "../authed-layout";
-import GenerateFieldsReport from "../fields/generate-fields-report/generate-field-report";
-import FieldsPanel from "../map/fields-panel/fields-panel";
-import AddFieldWidget from "../map/widgets/add-field-widget";
-import FieldsList from "./fields-list";
-import FiltersModal from "./filters-modal/filters-modal";
+import { useGetTasks } from "@fieldbee/api/hooks/queries/use-get-tasks";
+import { Badge, Box, Grid, IconButton, Stack } from "@fieldbee/ui/components";
+import { InputWithIcon, Loader } from "@fieldbee/ui";
+import * as React from "react";
+import { Search, TuneOutlined } from "@fieldbee/ui/icons";
+import TaskList from "./task-list";
+import TaskPanel from "./task-panel";
+import { t } from "i18next";
+import { SingleWordsTranslationKeys } from "../../localization";
 
-enum PlusButtonActionKeys {
-  IMPORT_FIELDS = "import-fields",
-  DRAW_FIELD = "draw-field",
-}
-
-const actions = [
-  {
-    icon: <Upload />,
-    name: "Import fields",
-    key: PlusButtonActionKeys.IMPORT_FIELDS,
-  },
-  {
-    icon: <TabUnselected />,
-    name: "Draw field",
-    key: PlusButtonActionKeys.DRAW_FIELD,
-  },
-];
-
-const FieldsNew = () => {
-  const router = useRouter();
+const Tasks = () => {
   const [selectedGroup, setSelectedGroup] = React.useState<string>("");
-  const [searchTerm, setSearchTerm] = React.useState<string>("");
-  const { data, isLoading, isRefetching } = useGetOrganizationFields();
+  const [searchTaskTerm, setSearchTaskTerm] = React.useState<string>("");
+  const { data, isLoading, isRefetching } = useGetTasks();
 
   const handleSelectGroup = (groupName: string) => {
     setSelectedGroup(groupName);
@@ -64,8 +43,8 @@ const FieldsNew = () => {
                 fullWidth={true}
                 placeholder="Search"
                 startAdornment={<Search />}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                value={searchTaskTerm}
+                onChange={(e) => setSearchTaskTerm(e.target.value)}
               />
 
               <Box
@@ -73,9 +52,21 @@ const FieldsNew = () => {
                   marginX: "10px",
                 }}
               >
-                <FiltersModal />
+                {/* TODO: Separate */}
+                <Badge badgeContent={0} color="primary">
+                  <IconButton
+                    size="medium"
+                    aria-label={t(SingleWordsTranslationKeys.Filter).toString()}
+                  >
+                    <TuneOutlined
+                      sx={{
+                        width: "32px",
+                        height: "32px",
+                      }}
+                    />
+                  </IconButton>
+                </Badge>
               </Box>
-              {data && <GenerateFieldsReport uris={data.map((x) => x.uri)} />}
             </Stack>
             {(isLoading || isRefetching) && (
               <Box
@@ -94,9 +85,9 @@ const FieldsNew = () => {
               }}
             >
               {!isLoading && !isRefetching && data && (
-                <FieldsList
-                  fields={data}
-                  searchTerm={searchTerm}
+                <TaskList
+                  tasks={data}
+                  searchTerm={searchTaskTerm}
                   selectedGroup={selectedGroup}
                   handleSelectGroup={handleSelectGroup}
                 />
@@ -114,13 +105,14 @@ const FieldsNew = () => {
           })}
           padding={0}
         >
-          <FieldsPanel selectedGroup={selectedGroup} />
-
-          <AddFieldWidget />
+          <TaskPanel
+            selectedGroup={selectedGroup}
+            searchTerm={searchTaskTerm}
+          />
         </Grid>
       </Grid>
     </AuthedLayout>
   );
 };
 
-export default FieldsNew;
+export default Tasks;
