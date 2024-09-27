@@ -5,6 +5,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   height: 48,
   width: 48,
   padding: 0,
+  borderRadius: "8px",
   minWidth: "unset",
   flexDirection: "column",
   fontSize: "12px",
@@ -30,6 +31,7 @@ export const NavButton = ({ active, ...props }: Props) => {
     <StyledButton
       sx={{
         color: active ? theme.palette.primary.main : "",
+        backgroundColor: active ? theme.palette.mix.main : "",
       }}
       {...props}
     />

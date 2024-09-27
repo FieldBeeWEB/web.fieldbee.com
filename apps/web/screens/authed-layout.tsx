@@ -8,8 +8,8 @@ import {
 } from "@fieldbee/ui";
 import { ListItemIcon, MenuItem, Typography } from "@fieldbee/ui/components";
 import AccountOutlinedIcon from "@fieldbee/ui/custom-icons/AccountOutlinedIcon";
-import FieldsIcon from "@fieldbee/ui/custom-icons/FieldsIcon";
-import { AccountCircleOutlined, Logout, MapOutlined } from "@fieldbee/ui/icons";
+
+import { AccountCircleOutlined, Logout } from "@fieldbee/ui/icons";
 import { t } from "i18next";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -21,7 +21,7 @@ import {
   SingleWordsTranslationKeys,
 } from "../localization";
 import Settings from "./settings";
-import TasksIcon from "@fieldbee/ui/custom-icons/TasksIcon";
+import { MenuList } from "./authed-menu";
 
 export default function AuthedLayout({ children }: React.PropsWithChildren) {
   const router = useRouter();
@@ -54,36 +54,21 @@ export default function AuthedLayout({ children }: React.PropsWithChildren) {
             router.push(pagePaths.authPages.home);
           }}
         >
-          <Image src="/logo.svg" alt="FieldBee" width={35} height={35} />
+          <Image src="/logo.svg" alt="FieldBee" width={48} height={48} />
         </NavButton>
         <Stack>
-          <NavButton
-            startIcon={<MapOutlined />}
-            onClick={() => {
-              router.push(pagePaths.authPages.map);
-            }}
-            active={router.pathname === pagePaths.authPages.map}
-          >
-            {t(SingleWordsTranslationKeys.Map)}
-          </NavButton>
-          <NavButton
-            startIcon={<FieldsIcon />}
-            onClick={() => {
-              router.push(pagePaths.authPages.fields);
-            }}
-            active={router.pathname.includes(pagePaths.authPages.fields)}
-          >
-            {t(SingleWordsTranslationKeys.Fields)}
-          </NavButton>
-          <NavButton
-            startIcon={<TasksIcon />}
-            onClick={() => {
-              router.push(pagePaths.authPages.tasks);
-            }}
-            active={router.pathname.includes(pagePaths.authPages.tasks)}
-          >
-            {t(SingleWordsTranslationKeys.Tasks)}
-          </NavButton>
+          {MenuList.map(({ path, title, icon: Icon }, index) => (
+            <NavButton
+              key={index}
+              startIcon={<Icon />}
+              onClick={() => {
+                router.push(path);
+              }}
+              active={router.pathname === path}
+            >
+              {title}
+            </NavButton>
+          ))}
         </Stack>
         <Stack>
           <Typography variant="caption" textAlign={"center"}>
@@ -115,7 +100,7 @@ export default function AuthedLayout({ children }: React.PropsWithChildren) {
               </ListItemIcon>
               {t(SingleWordsTranslationKeys.Logout)}
             </MenuItem>
-            {/* <Divider /> */}
+            {/*<Divider />*/}
             <MenuItem onClick={handleOpenSettings}>
               <ListItemIcon>
                 <AccountCircleOutlined fontSize="small" />

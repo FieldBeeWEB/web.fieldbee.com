@@ -1,5 +1,5 @@
 import AuthedLayout from "../authed-layout";
-import { useGetTasks } from "@fieldbee/api/hooks/queries/use-get-tasks";
+import { useGetTasks } from "@fieldbee/api";
 import { Badge, Box, Grid, IconButton, Stack } from "@fieldbee/ui/components";
 import { InputWithIcon, Loader } from "@fieldbee/ui";
 import * as React from "react";

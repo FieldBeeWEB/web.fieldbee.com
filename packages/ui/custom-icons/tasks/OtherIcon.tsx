@@ -1,13 +1,22 @@
-import { SvgIcon, SvgIconProps } from "@mui/material";
-import * as React from "react";
+import { SvgIcon, SvgIconProps } from '@mui/material'
+import * as React from 'react'
 
-const OtherIcon: React.FunctionComponent<SvgIconProps> = (props) => (
-  <SvgIcon viewBox="0 0 80 80" {...props}>
-    <rect x="4" y="4" width="72" height="72" rx="8" fill="#D2D4D6" />
-    <circle cx="25.6" cy="39.9984" r="3.6" fill="white" />
-    <circle cx="40" cy="39.9984" r="3.6" fill="white" />
-    <circle cx="54.4" cy="39.9984" r="3.6" fill="white" />
-  </SvgIcon>
-);
+const OtherIcon: React.FunctionComponent<SvgIconProps> = props => (
+	<SvgIcon width='24' height='24' viewBox='0 0 24 24' {...props}>
+		<rect width='24' height='24' rx='12' fill='#D2D4D6' />
+		<path
+			d='M7.6801 13.0799C8.27656 13.0799 8.7601 12.5964 8.7601 11.9999C8.7601 11.4035 8.27656 10.9199 7.6801 10.9199C7.08363 10.9199 6.6001 11.4035 6.6001 11.9999C6.6001 12.5964 7.08363 13.0799 7.6801 13.0799Z'
+			fill='white'
+		/>
+		<path
+			d='M11.9999 13.0799C12.5964 13.0799 13.0799 12.5964 13.0799 11.9999C13.0799 11.4035 12.5964 10.9199 11.9999 10.9199C11.4035 10.9199 10.9199 11.4035 10.9199 11.9999C10.9199 12.5964 11.4035 13.0799 11.9999 13.0799Z'
+			fill='white'
+		/>
+		<path
+			d='M16.32 13.0799C16.9165 13.0799 17.4 12.5964 17.4 11.9999C17.4 11.4035 16.9165 10.9199 16.32 10.9199C15.7235 10.9199 15.24 11.4035 15.24 11.9999C15.24 12.5964 15.7235 13.0799 16.32 13.0799Z'
+			fill='white'
+		/>
+	</SvgIcon>
+)
 
-export default OtherIcon;
+export default OtherIcon

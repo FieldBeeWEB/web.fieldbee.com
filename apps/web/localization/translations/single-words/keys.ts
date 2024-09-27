@@ -1,4 +1,5 @@
 export const SingleWordsTranslationKeys = {
+  Dashboard: "dashboard",
   Password: "password",
   Login: "login",
   Map: "map",

@@ -4,7 +4,7 @@ import AuthedLayout from "../screens/authed-layout";
 export async function getServerSideProps() {
   return {
     redirect: {
-      destination: pagePaths.authPages.map,
+      destination: pagePaths.authPages.dashboard,
       permanent: false,
     },
   };

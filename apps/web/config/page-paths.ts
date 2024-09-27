@@ -1,5 +1,6 @@
 const authPages = {
   home: "/",
+  dashboard: "/dashboard",
   profile: "/profile",
   fields: "/fields",
   tasks: "/tasks",

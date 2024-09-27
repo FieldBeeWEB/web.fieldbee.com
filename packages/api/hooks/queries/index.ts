@@ -30,6 +30,7 @@ export type {
   Season,
   Task,
 } from "./use-get-organization-fields";
+export { useGetTasks } from "./use-get-tasks";
 export type {
   TaskProgress,
   TasksResponse,

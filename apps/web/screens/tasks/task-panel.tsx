@@ -1,9 +1,8 @@
-import { MeasurementType, TasksResponse } from "@fieldbee/api";
+import { MeasurementType, TasksResponse, useGetTasks } from "@fieldbee/api";
 import { SelectableBox, Stack } from "@fieldbee/ui";
 import { Button, Divider, Typography } from "@fieldbee/ui/components";
 import * as React from "react";
 import useAppContext from "../shared/providers/use-app-context";
-import { useGetTasks } from "@fieldbee/api/hooks/queries/use-get-tasks";
 import {
   FertilizingIcon,
   HarvestingIcon,

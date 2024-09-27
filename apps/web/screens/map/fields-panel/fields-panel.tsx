@@ -105,9 +105,10 @@ export default function FieldsPanel({ selectedGroup, searchTerm }: Props) {
                     </Typography>
 
                     <Stack spacing="0">
-                      {field.tasks?.map((task) => (
-                        <Typography key={task.uri}>{task.taskName}</Typography>
-                      ))}
+                      {/*{field.tasks?.map((task) => (*/}
+                      {/*  <Typography key={task.uri}>{task.taskName}</Typography>*/}
+                      {/*))}*/}
+                      {field.tasks && field.tasks?.at(-1)?.taskName}
                     </Stack>
                   </Stack>
                 </Stack>

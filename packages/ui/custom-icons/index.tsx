@@ -8,3 +8,4 @@ export * from "./FieldsIcon";
 export * from "./InputErrorIcon";
 export * from "./SprayingIcon";
 export * from "./TasksIcon";
+export * from "./DashboardIcon";
