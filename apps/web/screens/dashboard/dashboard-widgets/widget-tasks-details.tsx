@@ -1,4 +1,9 @@
-import { Dropdown, DropdownMenuItem, Stack, theme } from "@fieldbee/ui";
+import {
+  DashboardDropdown,
+  DropdownMenuItem,
+  Stack,
+  theme,
+} from "@fieldbee/ui";
 import {
   Button,
   Table,
@@ -82,8 +87,7 @@ const WidgetTasksDetails = ({
         >
           Task Type
         </Typography>
-        <Dropdown
-          type="dashboard"
+        <DashboardDropdown
           trigger={
             <Button
               sx={{

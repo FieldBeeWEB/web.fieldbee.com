@@ -1,5 +1,10 @@
 import { useGetProfile, useGetSeasons } from "@fieldbee/api";
-import { Dropdown, DropdownMenuItem, Stack, theme } from "@fieldbee/ui";
+import {
+  DashboardDropdown,
+  DropdownMenuItem,
+  Stack,
+  theme,
+} from "@fieldbee/ui";
 import { Button, Skeleton, Typography } from "@fieldbee/ui/components";
 import { ArrowDropDown, Today } from "@fieldbee/ui/icons";
 import { t } from "i18next";
@@ -67,8 +72,7 @@ const DashboardHeader = ({
         )}
       </Stack>
       <Stack>
-        <Dropdown
-          type="dashboard"
+        <DashboardDropdown
           trigger={
             <Button
               sx={{
