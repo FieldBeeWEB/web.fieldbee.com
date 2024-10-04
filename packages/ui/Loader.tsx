@@ -1,20 +1,28 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
-const StyledLoader = styled.div`
-	border: 8px solid rgba(255, 216, 51, 0.5);
-	border-top: 8px solid #ffd833;
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	animation: spin 2s linear infinite;
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-`
+interface LoaderProps {
+  size?: number;
+  margin?: string;
+}
 
-export const Loader = () => <StyledLoader />
+const StyledLoader = styled.div<LoaderProps>`
+  border: 4px solid #ffd833;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  width: ${(props) => (props.size ? `${props.size}px` : "60px")};
+  height: ${(props) => (props.size ? `${props.size}px` : "60px")};
+  animation: spin 2s linear infinite;
+  margin: ${(props) => (props.margin ? `${props.margin}` : "")};
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const Loader = ({ size = 60, margin = "" }: LoaderProps) => (
+  <StyledLoader size={size} margin={margin} />
+);

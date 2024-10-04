@@ -16,5 +16,6 @@
   "the-archive-file-has-to-contain": "The archive has to contain at least one of each of the following file types: .shp shape file, .shx index file and .dbf database file Archive may also include .prj, .kml files or other file types.",
   "or-drag-and-drop-file-from-your-desktop": "or drag and drop file from your desktop",
   "must-be-valid-email": "Must be valid email.",
-  "a-simple-and-affordable-tractor-gps-navigation-and-auto-steering-system-for-your-farm": "A simple and affordable tractor gps navigation and auto steering system for your farm"
+  "a-simple-and-affordable-tractor-gps-navigation-and-auto-steering-system-for-your-farm": "A simple and affordable tractor gps navigation and auto steering system for your farm",
+  "we-re-doing-our-best-to-download-all-your-data-for-you": "We're doing our best to download all your data for you."
 }

@@ -15,10 +15,10 @@ export const setMeasurementUnits = (mu: GetUserMeasureUnits) => {
 
 export function getMeasurementString(
   measurementSi: number,
-  type: MeasurementType
+  type: MeasurementType,
 ) {
   const units: GetUserMeasureUnits | null = JSON.parse(
-    localStorage.getItem(localStorageKeys.MU) ?? "null"
+    localStorage.getItem(localStorageKeys.MU) ?? "null",
   );
   if (units === null) {
     return null;
@@ -41,10 +41,10 @@ export function getMeasurementString(
 
 export function getMeasurementInCurrentUnit(
   measurementSi: number,
-  type: MeasurementType
+  type: MeasurementType,
 ) {
   const units: GetUserMeasureUnits | null = JSON.parse(
-    localStorage.getItem(localStorageKeys.MU) ?? "null"
+    localStorage.getItem(localStorageKeys.MU) ?? "null",
   );
   if (units === null) {
     return null;
@@ -64,9 +64,10 @@ export function getMeasurementInCurrentUnit(
   }
   return Number((measurementSi * unit.factor).toFixed(2));
 }
+
 export function getMeasurementInSi(measurement: number, type: MeasurementType) {
   const units: GetUserMeasureUnits | null = JSON.parse(
-    localStorage.getItem(localStorageKeys.MU) ?? "null"
+    localStorage.getItem(localStorageKeys.MU) ?? "null",
   );
   if (units === null) {
     return 0;

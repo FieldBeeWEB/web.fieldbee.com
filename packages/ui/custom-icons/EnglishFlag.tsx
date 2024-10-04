@@ -10,12 +10,12 @@ const EnglishFlag = () => (
       xmlns="http://www.w3.org/2000/svg"
     >
       <g id="Flags">
-        <g clip-path="url(#clip0_1335_19504)">
+        <g clipPath="url(#clip0_1335_19504)">
           <rect y="0.5" width="15" height="15" rx="7.5" fill="#1A47B8" />
           <path
             id="Vector"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipPath="evenodd"
             d="M-0.766028 0.5H-3V3L15.7539 15.5L18 15.5V13L-0.766028 0.5Z"
             fill="white"
           />
@@ -26,8 +26,8 @@ const EnglishFlag = () => (
           />
           <path
             id="Vector_3"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipPath="evenodd"
             d="M16 0.5H18V3C18 3 5.0098 11.3281 -1 15.5H-3V13L16 0.5Z"
             fill="white"
           />
@@ -38,15 +38,15 @@ const EnglishFlag = () => (
           />
           <path
             id="Vector_5"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipPath="evenodd"
             d="M4.63708 0.5H10.3804V5.12682H18V10.8701H10.3804V15.5H4.63708V10.8701H-3V5.12682H4.63708V0.5Z"
             fill="white"
           />
           <path
             id="Vector_6"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipPath="evenodd"
             d="M5.8421 0.5H9.15789V6.26923H18V9.73077H9.15789V15.5H5.8421V9.73077H-3V6.26923H5.8421V0.5Z"
             fill="#F93939"
           />

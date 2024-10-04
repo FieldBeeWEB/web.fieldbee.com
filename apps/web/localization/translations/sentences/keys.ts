@@ -27,6 +27,8 @@ export const SentencesTranslationKeys = {
   MustBeValidEmail: "must-be-valid-email",
   ASimpleAndAffordableTractorGpsNavigationAndAutoSteeringSystemForYourFarm:
     "a-simple-and-affordable-tractor-gps-navigation-and-auto-steering-system-for-your-farm",
+  WeReDoingOurBestToDownloadAllYourDataForYou:
+    "we-re-doing-our-best-to-download-all-your-data-for-you",
 } as const;
 
 export type SentencesTranslationKeys = keyof typeof SentencesTranslationKeys;

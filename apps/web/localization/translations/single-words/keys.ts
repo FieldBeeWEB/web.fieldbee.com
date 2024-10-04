@@ -48,6 +48,11 @@ export const SingleWordsTranslationKeys = {
   Filters: "filters",
   Details: "details",
   Filter: "filter",
+  Type: "type",
+  FieldsAmount: "fields-amount",
+  Progress: "progress",
+  Amount: "amount",
+  Percent: "percent",
 };
 
 export type SingleWordsTranslationKeys =

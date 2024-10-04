@@ -9,3 +9,4 @@ export * from "./InputErrorIcon";
 export * from "./SprayingIcon";
 export * from "./TasksIcon";
 export * from "./DashboardIcon";
+export * from "./EmptyFolder";

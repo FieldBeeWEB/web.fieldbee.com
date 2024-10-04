@@ -87,5 +87,13 @@
 	"add-new-crop": "Add new crop",
 	"fields-amount": "Fields Amount",
 	"total-area": "Total Area",
-	"tasks-amount": "Tasks Amount"
+	"tasks-amount": "Tasks Amount",
+	"open": "Open",
+	"in-progress": "In Progress",
+	"completed": "Completed",
+	"all-data": "All Data",
+	"no-task-data": "No Task data",
+	"downloading-data": "Downloading data...",
+	"all-tasks": "All Tasks",
+	"no-crop-data": "No Crop data"
 }

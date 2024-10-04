@@ -47,5 +47,10 @@
   "store": "Store",
   "filters": "Filters",
   "details": "Details", 
-  "filter": "Filter"
+  "filter": "Filter",
+  "type": "Type",
+  "fields-amount": "Fields Amount",
+  "progress": "Progress",
+  "amount": "Amount",
+  "percent": "Percent"
 }
