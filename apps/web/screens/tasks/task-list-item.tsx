@@ -54,7 +54,7 @@ const operationIcons: Record<OPERATION, JSX.Element> = {
   ),
 };
 
-const TaskItem = ({ task }: ITaskItem) => {
+const TaskListItem = ({ task }: ITaskItem) => {
   const [selected, setSelected] = useState<string>("");
 
   const operationIcon = (name: string): JSX.Element => {
@@ -218,4 +218,4 @@ const TaskItem = ({ task }: ITaskItem) => {
   );
 };
 
-export default TaskItem;
+export default TaskListItem;
