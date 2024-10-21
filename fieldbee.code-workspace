@@ -2,35 +2,35 @@
 	"folders": [
 		{
 			"path": ".",
-			"name": "root"
+			"name": "root",
 		},
 		{
 			"path": "./apps/web",
-			"name": "web"
+			"name": "web",
 		},
 		{
 			"path": "./apps/docs",
-			"name": "docs"
+			"name": "docs",
 		},
 		{
 			"path": "./packages",
-			"name": "packages"
-		}
+			"name": "packages",
+		},
 	],
 	"settings": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.formatOnSave": true,
 		"editor.codeActionsOnSave": {
-			"source.organizeImports": "explicit"
+			"source.organizeImports": "explicit",
 		},
 		"files.exclude": {
-			"**/dist": false
+			"**/dist": false,
 		},
 		"typescript.preferences.importModuleSpecifier": "relative",
 		"javascript.preferences.importModuleSpecifier": "relative",
 		"[typescript]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
+			"editor.defaultFormatter": "esbenp.prettier-vscode",
 		},
-		"cSpell.words": ["fieldbee"]
-	}
+		"cSpell.words": ["fieldbee"],
+	},
 }

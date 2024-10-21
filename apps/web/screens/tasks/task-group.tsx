@@ -1,68 +1,89 @@
-import { SelectableRow } from "@fieldbee/ui";
-import { Divider, Stack, Typography } from "@fieldbee/ui/components";
-import { ArrowRightSharp } from "@fieldbee/ui/icons";
-import { t } from "i18next";
-import { SingleWordsTranslationKeys } from "../../localization";
-import { getMeasurementString } from "../../helpers/format-area";
-import { MeasurementType, TasksResponse } from "@fieldbee/api";
+import { TasksResponse } from '@fieldbee/api'
+import { Stack } from '@fieldbee/ui/components'
+import { t } from 'i18next'
+import { SingleWordsTranslationKeys } from '../../localization'
+import TaskKanban from './task-kanban'
+import TaskList, { statusName } from './task-list'
 
 interface Props {
-  group: TasksResponse[];
-  name: keyof typeof statusName;
-  handleSelectGroup: (groupName: string) => void;
-  selectedGroup: string;
+	tasks: TasksResponse[]
+	viewMode?: 'list' | 'kanban'
+	searchTerm: string
+	handleSelectGroup: (groupName: string) => void
+	selectedGroup: string
 }
 
-export const statusName = {
-  OPEN: "Open",
-  IN_WORK_ON_FO: "In progress",
-  EXECUTED: "Done",
-};
+type GroupedTasks = {
+	[key: string]: TasksResponse[]
+}
 
 export default function TaskGroup({
-  group,
-  name,
-  handleSelectGroup,
-  selectedGroup,
+	tasks,
+	viewMode = 'list',
+	searchTerm,
+	selectedGroup,
+	handleSelectGroup,
 }: Props) {
-  return (
-    <SelectableRow
-      selected={selectedGroup === name}
-      onClick={() => handleSelectGroup(name)}
-    >
-      <Stack
-        direction="row"
-        alignItems="center"
-        padding="16px"
-        spacing={2}
-        divider={<Divider orientation="vertical" flexItem />}
-      >
-        <Typography>{statusName[name]}</Typography>
-        <Typography variant="caption">
-          {group.length}{" "}
-          {group.length > 1
-            ? t(SingleWordsTranslationKeys.Tasks)
-            : t(SingleWordsTranslationKeys.Task)}
-        </Typography>
+	const groupedTasks =
+		tasks &&
+		tasks
+			.filter(x => x.taskName.toLowerCase().includes(searchTerm.toLowerCase()))
+			.reduce<GroupedTasks>(
+				(groups, item) => ({
+					...groups,
+					[item.taskStatus
+						? item.taskStatus
+						: t(SingleWordsTranslationKeys.Other)]: [
+						...(groups[
+							item.taskStatus
+								? item.taskStatus
+								: t(SingleWordsTranslationKeys.Other)
+						] || []),
+						item,
+					],
+				}),
+				{}
+			)
 
-        <Typography variant="caption">
-          {getMeasurementString(
-            group
-              .map((g) => g.fields.map((field) => field.areaSi))
-              .flat()
-              .reduce((a, b) => a + b, 0),
-            MeasurementType.AREA,
-          )}
-        </Typography>
-      </Stack>
-      {selectedGroup === name && (
-        <ArrowRightSharp
-          sx={{
-            padding: "8px",
-          }}
-          color="primary"
-        />
-      )}
-    </SelectableRow>
-  );
+	const taskGroupNames = Object.keys(groupedTasks)
+	return (
+		<Stack
+			spacing={0}
+			sx={
+				viewMode === 'list'
+					? {
+							flexDirection: 'column',
+						}
+					: {
+							flexDirection: 'row',
+							justifyContent: 'space-between',
+							marginX: 3,
+							marginY: 2,
+							gap: 5,
+						}
+			}
+		>
+			{taskGroupNames
+				.reverse()
+				.map(taskName =>
+					viewMode === 'list' ? (
+						<TaskList
+							key={taskName}
+							name={taskName as keyof typeof statusName}
+							group={groupedTasks[taskName]}
+							handleSelectGroup={handleSelectGroup}
+							selectedGroup={selectedGroup}
+						/>
+					) : (
+						<TaskKanban
+							key={taskName}
+							name={taskName as keyof typeof statusName}
+							group={groupedTasks[taskName]}
+							handleSelectGroup={handleSelectGroup}
+							selectedGroup={selectedGroup}
+						/>
+					)
+				)}
+		</Stack>
+	)
 }
