@@ -57,8 +57,8 @@ export default function AddField() {
             router.push(
               `${pagePaths.authPages.field(
                 data.fldID ? data.fldID.toString() : "",
-                data.uri || ""
-              )}`
+                data.uri || "",
+              )}`,
             );
           } else if (data.error) {
             if (data.error === "exists") {
@@ -76,7 +76,7 @@ export default function AddField() {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -91,7 +91,7 @@ export default function AddField() {
   const handleMeasurement = React.useCallback(() => {
     setMeasurementActive((p) => !p);
   }, []);
-  console.log("COORDFINATES ADD FIELD", coordinates);
+  // console.log("COORDFINATES ADD FIELD", coordinates);
 
   return (
     <AuthedLayout>

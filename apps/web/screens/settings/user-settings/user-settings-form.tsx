@@ -1,6 +1,6 @@
 import { MeasurementUnit } from '@fieldbee/api'
 import { GetUserMeasureUnits } from '@fieldbee/api/hooks/queries/use-get-user-measure-units'
-import { Button, ModalFooter, Stack } from '@fieldbee/ui'
+import { Button, Stack, theme } from '@fieldbee/ui'
 import {
 	FormControl,
 	FormHelperText,
@@ -193,17 +193,26 @@ const UserSettingsForm: React.FunctionComponent<Props> = ({
 						)}
 					/>
 				)}
+				<Stack direction={'row'} justifyContent={'end'} alignItems={'center'}>
+					<Button
+						onClick={handleSubmit(onSubmit)}
+						size='large'
+						loading={loading}
+						disabled={!formState.isDirty}
+						sx={{
+							width: 150,
+						}}
+					>
+						<Typography
+							variant='body1'
+							color={theme.palette.secondary_shades[200]}
+							fontWeight={600}
+						>
+							{t(SingleWordsTranslationKeys.Save)}
+						</Typography>
+					</Button>
+				</Stack>
 			</Stack>
-			<ModalFooter>
-				<Button
-					onClick={handleSubmit(onSubmit)}
-					size='large'
-					loading={loading}
-					disabled={!formState.isDirty}
-				>
-					{t(SingleWordsTranslationKeys.Save)}
-				</Button>
-			</ModalFooter>
 		</Stack>
 	)
 }

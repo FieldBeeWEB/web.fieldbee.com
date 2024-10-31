@@ -32,25 +32,25 @@ interface Props {
 
 export const operationIcons: Record<OPERATION, JSX.Element> = {
 	[OPERATION.FERTILIZING]: (
-		<TaskIcon.FertilizingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.FertilizingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.HARVESTING]: (
-		<TaskIcon.HarvestingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.HarvestingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.HAYMAKING]: (
-		<TaskIcon.HaymakingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.HaymakingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.PLANTING]: (
-		<TaskIcon.PlantingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.PlantingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.SPRAYING]: (
-		<TaskIcon.SprayingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.SprayingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.TILLING]: (
-		<TaskIcon.TillingIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.TillingIcon sx={{ width: '32px', height: '32px' }} />
 	),
 	[OPERATION.OTHER]: (
-		<TaskIcon.OtherIcon sx={{ width: '42px', height: '42px' }} />
+		<TaskIcon.OtherIcon sx={{ width: '32px', height: '32px' }} />
 	),
 }
 
@@ -81,7 +81,7 @@ export default function TaskTable({ group, name }: Props) {
 					sx={{
 						bgcolor: selected.includes(task.uri)
 							? theme.palette.mix_shades[200]
-							: 'none',
+							: theme.palette.secondary_shades[200],
 						borderLeft: selected.includes(task.uri)
 							? `2px solid ${theme.palette.primary_shades[500]}`
 							: `2px solid transparent`,

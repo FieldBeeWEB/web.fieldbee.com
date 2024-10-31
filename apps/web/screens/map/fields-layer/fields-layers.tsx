@@ -32,7 +32,7 @@ export default function FieldsLayer({
   isEditMode = false,
 }: Props) {
   const [clickedField, setClickedField] = React.useState<ClickedField | null>(
-    null
+    null,
   );
   // const { isEditMode } = useAppContext();
   const { map } = useContext(MapContext);
@@ -50,11 +50,11 @@ export default function FieldsLayer({
       evt.pixel,
       function (feature, layer) {
         return layer;
-      }
+      },
     );
     if (layer) {
       const properties = layer.getProperties();
-      console.log("layer", layer.getProperties());
+      // console.log("layer", layer.getProperties());
       const pixel = evt.pixel;
       setClickedField({
         uri: properties.uri,

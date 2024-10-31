@@ -71,14 +71,14 @@ const DrawLayer: React.FunctionComponent<Props> = ({
     feature: any,
     segments: any,
     drawType?: any,
-    tip?: any
+    tip?: any,
   ) {
     const styles = [drawStyle];
     const geometry = feature.getGeometry();
     const type = geometry.getType();
     let point, label, line;
-    console.log("geo", geometry);
-    console.log("edit", feature, segments, drawType, tip, type);
+    // console.log("geo", geometry);
+    // console.log("edit", feature, segments, drawType, tip, type);
     if (!drawType || drawType === type) {
       if (type === "Polygon") {
         point = geometry.getInteriorPoint();

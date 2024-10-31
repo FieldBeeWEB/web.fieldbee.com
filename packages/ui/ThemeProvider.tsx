@@ -90,6 +90,20 @@ export const theme: Theme = createTheme({
 				}),
 			},
 		},
+		MuiAppBar: {
+			styleOverrides: {
+				root: ({ theme }) => ({
+					backgroundColor: theme.palette.secondary_shades[200],
+				}),
+			},
+		},
+		MuiDrawer: {
+			styleOverrides: {
+				paper: ({ theme }) => ({
+					backgroundColor: theme.palette.secondary_shades[200],
+				}),
+			},
+		},
 	},
 } as ThemeOptions)
 

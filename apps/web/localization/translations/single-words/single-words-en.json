@@ -1,5 +1,5 @@
 {
-	"dashboard": "Dash",
+	"dashboard": "Dashboard",
 	"password": "Password",
 	"login": "Login",
 	"map": "Map",
@@ -55,5 +55,6 @@
 	"percent": "Percent",
 	"view-mode": "View Mode",
 	"export": "Export",
-	"actions": "Actions"
+	"actions": "Actions",
+	"profile": "Profile"
 }

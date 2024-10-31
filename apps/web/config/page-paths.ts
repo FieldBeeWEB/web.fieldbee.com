@@ -1,28 +1,48 @@
 const authPages = {
-  home: "/",
-  dashboard: "/dashboard",
-  profile: "/profile",
-  fields: "/fields",
-  tasks: "/tasks",
-  map: "/map",
-  field: (id: string, uri: string) => `/fields/${id}?uri=${uri}`,
-  importFields: "/import-fields",
-  editField: (id: string, uri: string) => `/edit-field/${id}?uri=${uri}`,
-  addField: "add-field",
-} as const;
+	home: '/',
+	dashboard: '/dashboard',
+	profile: '/settings/profile',
+	fields: '/fields',
+	tasks: '/tasks',
+	map: '/map',
+	field: (id: string, uri: string) => `/fields/${id}?uri=${uri}`,
+	importFields: '/import-fields',
+	editField: (id: string, uri: string) => `/edit-field/${id}?uri=${uri}`,
+	addField: 'add-field',
+} as const
 
 const publicPages = {
-  login: "/login",
-  emailLogin: "/email-login",
-  resetPassword: "/reset-password",
-  setNewPassword: "/set-new-password",
-  signUp: "/sign-up",
-} as const;
+	login: '/login',
+	emailLogin: '/email-login',
+	resetPassword: '/reset-password',
+	setNewPassword: '/set-new-password',
+	signUp: '/sign-up',
+} as const
 
-export const authedPagePaths = Object.values(authPages);
+export const authedPagePaths = Object.values(authPages)
 
 export const pagePaths = {
-  publicPages,
-  authPages,
-  logout: "/logout",
-} as const;
+	publicPages,
+	authPages,
+	logout: '/settings/logout',
+} as const
+
+export const navigationPagePaths = {
+	login: 'login',
+	emailLogin: 'email-login',
+	resetPassword: 'reset-password',
+	setNewPassword: 'set-new-password',
+	signUp: 'sign-up',
+	home: '',
+	dashboard: 'dashboard',
+	fields: 'fields',
+	tasks: 'tasks',
+	map: 'map',
+	field: (id: string, uri: string) => `fields/${id}?uri=${uri}`,
+	importFields: 'import-fields',
+	editField: (id: string, uri: string) => `edit-field/${id}?uri=${uri}`,
+	addField: 'add-field',
+	profile: 'profile',
+	settings: 'settings',
+	logout: 'logout',
+} as const

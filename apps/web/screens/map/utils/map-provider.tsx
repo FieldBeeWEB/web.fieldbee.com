@@ -12,7 +12,7 @@ const MapProvider = ({ children }: any) => {
   const [center, setCenter] = React.useState<number[]>([18.6935328, 50.293468]);
   const [map, setMap] = React.useState<Map | null>(null);
   const [fieldUriForEdit, setFieldUriForEdit] = React.useState<string | null>(
-    null
+    null,
   );
 
   const handleSetFieldUri = (uri: string | null) => {
@@ -66,7 +66,7 @@ const MapProvider = ({ children }: any) => {
     };
 
     if (isNaN(center.lat) || isNaN(center.lon)) {
-      console.log("olMap: updateMapCenter: invalid coords");
+      // console.log("olMap: updateMapCenter: invalid coords");
       return;
     }
 
@@ -74,13 +74,13 @@ const MapProvider = ({ children }: any) => {
     const tc = transform(
       [parseFloat(coords[0]), parseFloat(coords[1])],
       API_MAP_PROJECTION,
-      WEB_APP_MAP_PROJECTION
+      WEB_APP_MAP_PROJECTION,
     ).concat(
       transform(
         [parseFloat(coords[2]), parseFloat(coords[3])],
         API_MAP_PROJECTION,
-        WEB_APP_MAP_PROJECTION
-      )
+        WEB_APP_MAP_PROJECTION,
+      ),
     );
 
     // maximizing bbox
@@ -105,7 +105,7 @@ const MapProvider = ({ children }: any) => {
     };
 
     if (isNaN(center.lat) || isNaN(center.lon)) {
-      console.log("olMap: updateMapCenter: invalid coords");
+      // console.log("olMap: updateMapCenter: invalid coords");
       return;
     }
 
@@ -113,13 +113,13 @@ const MapProvider = ({ children }: any) => {
     const tc = transform(
       [extent[0], extent[1]],
       API_MAP_PROJECTION,
-      WEB_APP_MAP_PROJECTION
+      WEB_APP_MAP_PROJECTION,
     ).concat(
       transform(
         [extent[2], extent[3]],
         API_MAP_PROJECTION,
-        WEB_APP_MAP_PROJECTION
-      )
+        WEB_APP_MAP_PROJECTION,
+      ),
     );
 
     // maximizing bbox

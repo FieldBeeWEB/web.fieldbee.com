@@ -1,4 +1,5 @@
 import { TasksResponse } from '@fieldbee/api'
+import { theme } from '@fieldbee/ui'
 import {
 	Grid,
 	Stack,
@@ -94,30 +95,55 @@ export default function TaskGroup({
 								height: '60px',
 							}}
 						>
-							<TableCell></TableCell>
-							<TableCell>
-								<Typography variant={'h6'}>Operation</Typography>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+							></TableCell>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+							>
+								<Typography variant={'body1'}>Operation</Typography>
 							</TableCell>
-							<TableCell>
-								<Typography variant={'subtitle1'}>Period</Typography>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+							>
+								<Typography variant={'body1'}>Period</Typography>
 							</TableCell>
-							<TableCell width={600}>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+								width={600}
+							>
 								<Grid container spacing={2}>
 									<Grid item xs={4}>
-										<Typography variant={'subtitle1'}>Field</Typography>
+										<Typography variant={'body1'}>Field</Typography>
 									</Grid>
 									<Grid item xs={4}>
-										<Typography variant={'subtitle1'}>Crop</Typography>
+										<Typography variant={'body1'}>Crop</Typography>
 									</Grid>
 									<Grid item xs={4}>
-										<Typography variant={'subtitle1'}>Progress</Typography>
+										<Typography variant={'body1'}>Progress</Typography>
 									</Grid>
 								</Grid>
 							</TableCell>
-							<TableCell>
-								<Typography variant={'subtitle1'}>Status</Typography>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+							>
+								<Typography variant={'body1'}>Status</Typography>
 							</TableCell>
-							<TableCell></TableCell>
+							<TableCell
+								sx={{
+									bgcolor: theme.palette.secondary.main,
+								}}
+							></TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>

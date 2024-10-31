@@ -1,4 +1,4 @@
-console.log("PROCESS", process.env);
+// console.log("PROCESS", process.env);
 
 export * from "@tanstack/react-query";
 export * from "./hooks";

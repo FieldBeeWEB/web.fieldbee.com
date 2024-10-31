@@ -41,7 +41,7 @@ const Dashboard = () => {
 	return (
 		<AuthedLayout>
 			<Container>
-				<Stack overflow={'auto'} paddingBottom={6}>
+				<Stack overflow={'auto'} paddingY={6}>
 					<DashboardHeader
 						handleSelectedPeriod={setSelectedPeriod}
 						selectedPeriod={selectedPeriod}

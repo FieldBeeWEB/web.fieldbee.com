@@ -33,13 +33,15 @@ const Tasks = () => {
 							padding={1}
 							sx={theme => ({
 								borderBottom: `1px solid ${theme.palette.secondary_shades[400]}`,
-								backgroundColor: theme.palette.secondary_shades[300],
+								backgroundColor: theme.palette.secondary_shades[200],
 							})}
 						>
 							<InputWithIcon
 								fullWidth={true}
 								placeholder='Search'
-								startAdornment={<Search />}
+								startAdornment={
+									<Search sx={{ flexShrink: 0, width: 32, height: 32 }} />
+								}
 								value={searchTaskTerm}
 								onChange={e => setSearchTaskTerm(e.target.value)}
 								sx={{

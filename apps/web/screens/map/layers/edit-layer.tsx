@@ -78,7 +78,7 @@ const EditLayer: React.FunctionComponent<Props> = ({
     feature: any,
     segments: any,
     drawType?: any,
-    tip?: any
+    tip?: any,
   ) {
     const styles = [drawStyle];
     const geometry = feature.getGeometry();
@@ -96,9 +96,9 @@ const EditLayer: React.FunctionComponent<Props> = ({
       line = geometry;
     } else if (type == "MultiPolygon") {
       point = geometry.getPolygon(0).getInteriorPoint();
-      console.log("multi point", point);
+      // console.log("multi point", point);
       label = formatArea(geometry);
-      console.log("multi label", label);
+      // console.log("multi label", label);
       line = new LineString(geometry.getPolygon(0).getCoordinates()[0]);
     }
     if (segments && line) {

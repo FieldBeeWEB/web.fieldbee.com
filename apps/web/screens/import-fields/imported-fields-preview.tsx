@@ -11,7 +11,7 @@ import VectorLayer from "../map/layers/vector-layer";
 import MapContent from "../map/map-content";
 import {
   API_MAP_PROJECTION,
-  WEB_APP_MAP_PROJECTION
+  WEB_APP_MAP_PROJECTION,
 } from "../map/utils/consts";
 import { basicLabelStyle, basicLayerStyle } from "../map/utils/map-styles";
 import useMapContext from "../map/utils/use-map-context";
@@ -19,6 +19,7 @@ import useMapContext from "../map/utils/use-map-context";
 interface Props {
   fields: Field[];
 }
+
 const style = [basicLayerStyle, basicLabelStyle];
 
 const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
@@ -44,7 +45,7 @@ const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
         handleSetCenterByExtent(extent);
       }
     },
-    [handleSetCenterByExtent, map]
+    [handleSetCenterByExtent, map],
   );
 
   React.useEffect(() => {
@@ -53,7 +54,7 @@ const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
     }
   }, [map]);
 
-  console.log("selected", selectedField);
+  // console.log("selected", selectedField);
   return (
     <Stack width="70%" direction="row" spacing={0} height="100vh">
       <Collapse in={expanded} orientation="horizontal" collapsedSize={80}>

@@ -56,6 +56,7 @@ export const SingleWordsTranslationKeys = {
 	ViewMode: 'view-mode',
 	Export: 'export',
 	Actions: 'actions',
+	Profile: 'profile',
 }
 
 export type SingleWordsTranslationKeys = keyof typeof SingleWordsTranslationKeys

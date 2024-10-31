@@ -25,12 +25,20 @@ const TaskActions = ({ viewMode, setViewMode }: ITaskActions) => {
 	const iconMap: { [key: string]: React.ReactNode } = {
 		list: (
 			<ViewKanbanOutlined
-				sx={{ width: '32px', height: '32px', color: theme.palette.white[600] }}
+				sx={{
+					width: '32px',
+					height: '32px',
+					color: theme.palette.white[400],
+				}}
 			/>
 		),
 		kanban: (
 			<TableViewOutlined
-				sx={{ width: '32px', height: '32px', color: theme.palette.white[600] }}
+				sx={{
+					width: '32px',
+					height: '32px',
+					color: theme.palette.white[400],
+				}}
 			/>
 		),
 		table: (

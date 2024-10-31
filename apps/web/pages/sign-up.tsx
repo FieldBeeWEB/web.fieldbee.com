@@ -1,5 +1,5 @@
-import SignUp from "../screens/auth-stack/sign-up";
+import SignUp from '../screens/auth-stack/sign-up'
 
 export default function SignUpPage() {
-  return <SignUp />;
+	return <SignUp />
 }

@@ -28,7 +28,7 @@ const CollapsibleLayout: React.FunctionComponent<Props> = ({
 	}, [])
 
 	return (
-		<Stack width='100%' height='100vh' direction='row' spacing={0}>
+		<Stack width='100%' height='calc(100vh - 65px)' direction='row' spacing={0}>
 			<Collapse in={expanded} orientation='horizontal'>
 				<Stack
 					width={`${leftSideWidth === 'small' ? SMALL_WIDTH : NORMAL_WIDTH}px`}
