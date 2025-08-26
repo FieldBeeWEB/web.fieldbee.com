@@ -6,7 +6,7 @@ import { API_MAP_PROJECTION, WEB_APP_MAP_PROJECTION } from "./consts";
 const getFieldImageUri = (
   id: number,
   bBox: string,
-  dimensions: number
+  dimensions: number,
 ): string => {
   const coordinates = bBox
     .replace(/\s/g, "")
@@ -16,12 +16,12 @@ const getFieldImageUri = (
   const newBbox1 = transform(
     coordinates.slice(0, 2),
     API_MAP_PROJECTION,
-    WEB_APP_MAP_PROJECTION
+    WEB_APP_MAP_PROJECTION,
   );
   const newBbox2 = transform(
     coordinates.slice(2, 4),
     API_MAP_PROJECTION,
-    WEB_APP_MAP_PROJECTION
+    WEB_APP_MAP_PROJECTION,
   );
 
   const newBbox = newBbox1.concat(newBbox2);

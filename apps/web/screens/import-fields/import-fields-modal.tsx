@@ -47,13 +47,13 @@ const ImportFieldsModal: React.FunctionComponent<Props> = ({
                   handleSetImportSessionResponse(data1);
                   router.push(pagePaths.authPages.importFields);
                 },
-              }
+              },
             );
           },
           onError: () => {
             toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
           },
-        }
+        },
       );
     },
     maxFiles: 1,
@@ -89,7 +89,7 @@ const ImportFieldsModal: React.FunctionComponent<Props> = ({
               background: isDragActive
                 ? "rgba(255, 216, 51, 0.5)"
                 : "rgba(255, 255, 255, 0.05)",
-              border: `1px dashed ${theme.palette.secondary_shades[300]}`,
+              border: `1px dashed ${theme.palette.background.default}`,
               borderRadius: "4px",
               padding: "16px",
             })}

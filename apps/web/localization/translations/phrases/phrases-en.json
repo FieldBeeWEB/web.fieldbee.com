@@ -81,7 +81,7 @@
 	"create-a-new-account": "Create a new account",
 	"not-a-user-sign-up": "Not a user? Sign up!",
 	"remind-my-password": "Remind my password",
-	"login-with-email": "Login with email",
+	"login-with-email": "Log in with email",
 	"create-new-account": "Create new account",
 	"save-changes": "Save changes",
 	"add-new-crop": "Add new crop",
@@ -95,5 +95,18 @@
 	"no-task-data": "No Task data",
 	"downloading-data": "Downloading data...",
 	"all-tasks": "All Tasks",
-	"no-crop-data": "No Crop data"
+	"no-crop-data": "No Crop data",
+	"please-log-in-to-continue": "Please log in to continue.",
+	"please-create-account-to-continue": "Please create account to continue.",
+	"dont-have-an-account": "Don't have an account?",
+	"create-account": "Create account",
+	"remember-me": "Remember me",
+	"welcome-to-fieldbee": "Welcome to FieldBee!",
+	"if-you-have-any-question-contact-our": "If you have any question, contact our",
+	"you-have-done-a-great-work": "You have done a great work",
+	"tasks-type": "Tasks type",
+	"no-group": "No Group",
+	"go-to-field-details": "Go to field details",
+	"map-type": "Map type",
+	"no-fields-yet": "No fields yet"
 }

@@ -1,4 +1,4 @@
-import { Button, Stack } from "@fieldbee/ui";
+import { Button, Stack, theme } from "@fieldbee/ui";
 import ClearableInput from "@fieldbee/ui/form/input/ClearableInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { t } from "i18next";
@@ -8,7 +8,6 @@ import * as Yup from "yup";
 import { emailRegex } from "../../../helpers/yup";
 import {
   PhrasesTranslationKeys,
-  SentencesTranslationKeys,
   SingleWordsTranslationKeys,
 } from "../../../localization";
 
@@ -36,7 +35,7 @@ const ResetPasswordForm: React.FunctionComponent<Props> = ({
   });
 
   return (
-    <Stack width="100%" flex="1" justifyContent="center" gap="32px">
+    <Stack width="100%">
       <Controller
         name="email"
         control={control}
@@ -48,13 +47,7 @@ const ResetPasswordForm: React.FunctionComponent<Props> = ({
             type="email"
             label={t(SingleWordsTranslationKeys.Email)}
             error={error}
-            helperText={
-              error
-                ? error.message
-                : t(
-                    SentencesTranslationKeys.EnterYourEmailAddressAndWeWillSendAPasswordResetLink
-                  ).toString()
-            }
+            helperText={error && error.message}
             value={value}
             onBlur={onBlur}
             onChange={onChange}
@@ -63,7 +56,18 @@ const ResetPasswordForm: React.FunctionComponent<Props> = ({
           />
         )}
       />
-      <Button onClick={handleSubmit(onSubmit)} size="large" loading={loading}>
+
+      <Button
+        onClick={handleSubmit(onSubmit)}
+        size="medium"
+        loading={loading}
+        sx={{
+          marginTop: "32px !important",
+          textTransform: "uppercase",
+          color: theme.palette.primary_emphasis.high,
+          fontWeight: 600,
+        }}
+      >
         {t(PhrasesTranslationKeys.SendResetLink)}
       </Button>
     </Stack>

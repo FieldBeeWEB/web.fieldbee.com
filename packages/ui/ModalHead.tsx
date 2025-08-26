@@ -1,55 +1,55 @@
-import { Close } from "@mui/icons-material";
+import { Close } from '@mui/icons-material'
 import {
-  Box as MBox,
-  BoxProps,
-  IconButton,
-  styled,
-  Typography,
-} from "@mui/material";
+	BoxProps,
+	IconButton,
+	Box as MBox,
+	styled,
+	Typography,
+} from '@mui/material'
 
 const Box = styled(MBox, {
-  shouldForwardProp: (prop) =>
-    prop !== "hasBottomBorder" && prop !== "hasBottomBorder",
+	shouldForwardProp: prop =>
+		prop !== 'hasBottomBorder' && prop !== 'hasBottomBorder',
 })<{ hasBottomBorder?: boolean }>(({ theme, hasBottomBorder }) => ({
-  borderBottom: !!hasBottomBorder
-    ? `1px solid ${theme.palette.secondary_shades[400]}`
-    : "none",
-  padding: "16px",
-  display: "flex",
-  backgroundColor: theme.palette.secondary.main,
-  borderTopLeftRadius: 16,
-  borderTopRightRadius: 16,
-  justifyContent: "end",
-  alignItems: "center",
-}));
+	borderBottom: !!hasBottomBorder
+		? `1px solid ${theme.palette.additional.pink}`
+		: 'none',
+	padding: '16px',
+	display: 'flex',
+	backgroundColor: theme.palette.secondary.main,
+	borderTopLeftRadius: 16,
+	borderTopRightRadius: 16,
+	justifyContent: 'end',
+	alignItems: 'center',
+}))
 
 type Props = {
-  closeModal: () => void;
-  title?: string;
-  hasBottomBorder?: boolean;
-} & BoxProps;
+	closeModal: () => void
+	title?: string
+	hasBottomBorder?: boolean
+} & BoxProps
 
 export const ModalHead = ({
-  closeModal,
-  title,
-  hasBottomBorder = true,
-  ...props
+	closeModal,
+	title,
+	hasBottomBorder = true,
+	...props
 }: Props) => {
-  return (
-    <Box hasBottomBorder={hasBottomBorder} {...props}>
-      {title && (
-        <Typography
-          sx={{
-            marginRight: "auto",
-            fontWeight: "700",
-          }}
-        >
-          {title}
-        </Typography>
-      )}
-      <IconButton size="small" aria-label="close" onClick={closeModal}>
-        <Close />
-      </IconButton>
-    </Box>
-  );
-};
+	return (
+		<Box hasBottomBorder={hasBottomBorder} {...props}>
+			{title && (
+				<Typography
+					sx={{
+						marginRight: 'auto',
+						fontWeight: '700',
+					}}
+				>
+					{title}
+				</Typography>
+			)}
+			<IconButton size='small' aria-label='close' onClick={closeModal}>
+				<Close />
+			</IconButton>
+		</Box>
+	)
+}

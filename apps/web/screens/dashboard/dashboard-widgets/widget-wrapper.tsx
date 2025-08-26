@@ -23,12 +23,12 @@ const WidgetWrapper = ({
 }: IWidgetWrapper) => {
   return (
     <Stack
-      bgcolor={theme.palette.secondary_shades[200]}
+      bgcolor={theme.palette.elevation_overlay["02dp"]}
       direction={"column"}
       height={height}
       padding={1.5}
       gap={gap || 0.25}
-      borderRadius={0.5}
+      borderRadius={1}
       spacing={spacing || 0.25}
       width={width}
       minHeight={minHeight}

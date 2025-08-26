@@ -107,7 +107,7 @@ const ImportFieldsForm: React.FunctionComponent<Props> = ({
           setNewGroup("");
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   }, [addCategory, newGroup, queryClient, setValue]);
 

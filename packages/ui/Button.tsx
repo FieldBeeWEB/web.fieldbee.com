@@ -2,7 +2,7 @@ import { LoadingButton, LoadingButtonProps } from '@mui/lab'
 import { styled } from '@mui/material'
 
 const StyledButton = styled(LoadingButton)(({ theme }) => ({
-	borderRadius: '100px',
+	borderRadius: '4px',
 	textTransform: 'none',
 	fontSize: '14px',
 	height: '40px',

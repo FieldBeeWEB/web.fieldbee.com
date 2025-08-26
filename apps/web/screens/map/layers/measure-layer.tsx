@@ -34,7 +34,7 @@ const MeasureLayer = () => {
     feature: any,
     segments: any,
     drawType?: any,
-    tip?: any
+    tip?: any,
   ) {
     const styles = [measureStyle];
     const geometry = feature.getGeometry();

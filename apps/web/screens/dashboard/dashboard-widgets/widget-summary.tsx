@@ -20,26 +20,15 @@ const WidgetSummary = ({
   return (
     <WidgetWrapper width={width} minHeight={85}>
       {isLoading || isFetching ? (
-        <Loader size={52} margin={"0 0 4px 0"} />
+        <Loader size={56} margin={"0 0 4px 0"} borderWidth={4} />
       ) : (
-        <Typography
-          sx={{
-            fontSize: "57px",
-            lineHeight: "64px",
-            fontWeight: 400,
-          }}
-        >
+        <Typography variant="h3" color={theme.palette.surface_emphasis.high}>
           {title}
         </Typography>
       )}
       <Typography
-        sx={{
-          fontSize: "12px",
-          lineHeight: "16px",
-          fontWeight: 400,
-          color: theme.palette.white[500],
-          letterSpacing: "0.03rem",
-        }}
+        variant="caption"
+        color={theme.palette.surface_emphasis.medium}
       >
         {subtitle}
       </Typography>

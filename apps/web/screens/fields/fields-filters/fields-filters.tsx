@@ -31,6 +31,7 @@ interface Props {
   handleClose: () => void;
   filters: FieldFiltersResponse | undefined;
 }
+
 export default function FieldsFilters({ handleClose, filters }: Props) {
   const [value, setValue] = React.useState(0);
   const [filterSet, setFilterSet] = React.useState(false);
@@ -42,19 +43,19 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
   const [groupsFilters, setGroupsFilters] = React.useState<string[]>(
     filters && filters.items.find((x) => x.name === "group")
       ? filters.items.find((x) => x.name === "group")?.values || []
-      : []
+      : [],
   );
   const queryClient = useQueryClient();
   const [worksFilters, setWorksFilters] = React.useState<string[]>(
     filters && filters.items.find((x) => x.name === "Works")
       ? filters.items.find((x) => x.name === "Works")?.values || []
-      : []
+      : [],
   );
 
   const [cropFilters, setCropFilters] = React.useState<string[]>(
     filters && filters.items.find((x) => x.name === "crop")
       ? filters.items.find((x) => x.name === "crop")?.values || []
-      : []
+      : [],
   );
 
   const { data: categoriesData } = useGetOrganizationFieldsCategories();
@@ -196,8 +197,8 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                   backgroundColor:
                     value === 0
                       ? theme.palette.primary.main
-                      : theme.palette.secondary_shades[600],
-                  color: theme.palette.secondary_shades[200],
+                      : theme.palette.additional.pink,
+                  color: theme.palette.background.default,
                   fontSize: "10px",
                   borderRadius: "30px",
                   display: "flex",
@@ -224,8 +225,8 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                   backgroundColor:
                     value === 1
                       ? theme.palette.primary.main
-                      : theme.palette.secondary_shades[600],
-                  color: theme.palette.secondary_shades[200],
+                      : theme.palette.additional.pink,
+                  color: theme.palette.background.default,
                   fontSize: "10px",
                   borderRadius: "30px",
                   display: "flex",
@@ -252,8 +253,8 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                   backgroundColor:
                     value === 2
                       ? theme.palette.primary.main
-                      : theme.palette.secondary_shades[600],
-                  color: theme.palette.secondary_shades[200],
+                      : theme.palette.additional.pink,
+                  color: theme.palette.background.default,
                   fontSize: "10px",
                   borderRadius: "30px",
                   display: "flex",
@@ -301,7 +302,7 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                 onChange={(event) => {
                   return handleChangeGroupFilters(
                     group.name,
-                    (event.target as any).checked
+                    (event.target as any).checked,
                   );
                 }}
               />
@@ -331,7 +332,7 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                 onChange={(event) => {
                   return handleChangeWorkFilters(
                     operation.name,
-                    (event.target as any).checked
+                    (event.target as any).checked,
                   );
                 }}
               />
@@ -352,7 +353,7 @@ export default function FieldsFilters({ handleClose, filters }: Props) {
                 onChange={(event) => {
                   return handleChangeCropFilters(
                     crop.name,
-                    (event.target as any).checked
+                    (event.target as any).checked,
                   );
                 }}
                 checked={cropFilters.includes(crop.name)}

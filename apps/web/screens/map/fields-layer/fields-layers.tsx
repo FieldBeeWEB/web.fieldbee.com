@@ -1,17 +1,27 @@
-import { useGetOrganizationFieldsWithGeometry } from "@fieldbee/api";
-import { Stack } from "@fieldbee/ui";
-import { Link, Typography } from "@fieldbee/ui/components";
+import {
+  MeasurementType,
+  useGetOrganizationFieldsWithGeometry,
+} from "@fieldbee/api";
+import { Button, Stack, theme } from "@fieldbee/ui";
+import { Typography } from "@fieldbee/ui/components";
+import { t } from "i18next";
+import { useRouter } from "next/router";
 import GeoJSON from "ol/format/GeoJSON";
 import { Vector as VectorSource } from "ol/source";
 import * as React from "react";
 import { useContext } from "react";
 import { pagePaths } from "../../../config/page-paths";
+import { getMeasurementString } from "../../../helpers/format-area";
+import { PhrasesTranslationKeys } from "../../../localization";
 import VectorLayer from "../layers/vector-layer";
 import { API_MAP_PROJECTION, WEB_APP_MAP_PROJECTION } from "../utils/consts";
 import MapContext from "../utils/map-context";
-import { basicLabelStyle, basicLayerStyle } from "../utils/map-styles";
+import {
+  defaultLabelStyle,
+  defaultSatelliteLayerStyle,
+} from "../utils/map-styles";
 
-const style = [basicLayerStyle, basicLabelStyle];
+const style = [defaultSatelliteLayerStyle, defaultLabelStyle];
 
 interface Props {
   fieldUris: string[];
@@ -22,6 +32,7 @@ interface Props {
 type ClickedField = {
   uri: string;
   name: string;
+  areaSi: number;
   top: string;
   left: string;
 };
@@ -34,7 +45,8 @@ export default function FieldsLayer({
   const [clickedField, setClickedField] = React.useState<ClickedField | null>(
     null,
   );
-  // const { isEditMode } = useAppContext();
+
+  const router = useRouter();
   const { map } = useContext(MapContext);
 
   const { data } = useGetOrganizationFieldsWithGeometry(fieldUris);
@@ -46,6 +58,7 @@ export default function FieldsLayer({
     if (isEditMode && clickedField) {
       setClickedField(null);
     }
+
     const layer = map.forEachFeatureAtPixel(
       evt.pixel,
       function (feature, layer) {
@@ -54,11 +67,11 @@ export default function FieldsLayer({
     );
     if (layer) {
       const properties = layer.getProperties();
-      // console.log("layer", layer.getProperties());
       const pixel = evt.pixel;
       setClickedField({
         uri: properties.uri,
         name: properties.name,
+        areaSi: properties.areaSi,
         left: pixel[0] + "px",
         top: pixel[1] + "px",
       });
@@ -68,35 +81,50 @@ export default function FieldsLayer({
   });
 
   if (!data) return null;
+
   return (
     <>
       {clickedField && !measurementActive && (
         <Stack
           direction="column"
-          spacing={2}
+          spacing={0}
           sx={{
             top: clickedField.top,
             left: clickedField.left,
             position: "absolute",
             zIndex: 1000,
-            background: "rgb(21, 21, 21)",
-            width: "100px",
+            background: theme.palette.elevation_overlay["08dp"],
             padding: "16px",
-            borderRadius: "16px",
+            borderRadius: "4px",
+            boxShadow: "0px 5px 5px 0px #00000033",
           }}
         >
           <Typography
+            variant="h6"
+            color={theme.palette.surface_emphasis.high}
+            textAlign="center"
             sx={{
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
             }}
           >
-            {clickedField.name}
+            {clickedField.name} |{" "}
+            {getMeasurementString(clickedField.areaSi, MeasurementType.AREA)}
           </Typography>
-          <Link href={`${pagePaths.authPages.field("1", clickedField.uri)}`}>
-            Go to field
-          </Link>
+          <Button
+            size="medium"
+            variant="text"
+            sx={{
+              color: theme.palette.primary.main,
+              textTransform: "uppercase",
+            }}
+            onClick={() => {
+              router.push(pagePaths.authPages.field("1", clickedField.uri));
+            }}
+          >
+            {t(PhrasesTranslationKeys.GoToFieldDetails).toString()}
+          </Button>
         </Stack>
       )}
       {data.map((field) => {
@@ -115,12 +143,17 @@ export default function FieldsLayer({
               })
             }
             style={() => {
-              basicLabelStyle.getText().setText(field.name);
+              defaultLabelStyle
+                .getText()
+                .setText(
+                  `${field.name} | ${getMeasurementString(field.areaSi, MeasurementType.AREA)}`,
+                );
               return style;
             }}
             properties={{
               uri: field.uri,
               name: field.name,
+              areaSi: field.areaSi,
             }}
             zIndex={10}
           />

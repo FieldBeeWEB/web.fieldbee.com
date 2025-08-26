@@ -48,7 +48,7 @@ export default function EditFieldDetails({ field }: Props) {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 

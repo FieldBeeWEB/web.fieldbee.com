@@ -13,7 +13,6 @@ const authPages = {
 
 const publicPages = {
 	login: '/login',
-	emailLogin: '/email-login',
 	resetPassword: '/reset-password',
 	setNewPassword: '/set-new-password',
 	signUp: '/sign-up',

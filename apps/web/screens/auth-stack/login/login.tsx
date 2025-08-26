@@ -3,21 +3,22 @@ import {
   useLogin,
   useLoginWithGoogle,
 } from "@fieldbee/api";
-import { Button, Stack } from "@fieldbee/ui";
+import { Stack, theme } from "@fieldbee/ui";
 import GoogleButton from "@fieldbee/ui/GoogleButton";
-import { Divider, Link } from "@fieldbee/ui/components";
+import { Divider, Link, Typography } from "@fieldbee/ui/components";
 import { addMinutes } from "date-fns";
 import { t } from "i18next";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { pagePaths } from "../../../config/page-paths";
+import { setMeasurementUnits } from "../../../helpers/format-area";
 import { setUserToken } from "../../../helpers/user-token";
 import {
   PhrasesTranslationKeys,
-  SentencesTranslationKeys,
   SingleWordsTranslationKeys,
 } from "../../../localization";
 import AuthLayout from "../auth-layout";
+import LoginForm, { LoginFormSchema } from "./login-form";
 
 export default function Login() {
   const router = useRouter();
@@ -27,6 +28,23 @@ export default function Login() {
   const { mutateAsync: login, isLoading } = useLogin();
   const { mutateAsync: loginWithGoogle } = useLoginWithGoogle();
   const { mutateAsync: getMeasurementUnits } = useGetUpdatedMeasurementUnits();
+
+  const onLogin = async (values: LoginFormSchema) => {
+    await login(values, {
+      onSuccess: async (data) => {
+        setUserToken({
+          ...data,
+          expires_at: addMinutes(new Date(), data.expires_in),
+        });
+        const measurements = await getMeasurementUnits(null);
+        setMeasurementUnits(measurements);
+        router.push(pagePaths.authPages.home);
+      },
+      onError: () => {
+        setErrorMessage(t(PhrasesTranslationKeys.InvalidLoginCredentials));
+      },
+    });
+  };
 
   React.useEffect(() => {
     async function loginToSystem(token: string) {
@@ -47,54 +65,81 @@ export default function Login() {
         setErrorMessage(t(PhrasesTranslationKeys.InvalidLoginCredentials));
       }
     }
+
     if (router.isReady && idToken) {
       loginToSystem(idToken.toString());
     }
   }, [router, idToken, loginWithGoogle]);
 
   return (
-    <AuthLayout
-      headline={t(PhrasesTranslationKeys.LoginToYourFieldBeeAccount).toString()}
-      supportingText={t(
-        SentencesTranslationKeys.ASimpleAndAffordableTractorGpsNavigationAndAutoSteeringSystemForYourFarm
-      ).toString()}
-    >
-      <Stack width="100%">
-        <Button
-          size="large"
-          onClick={() => router.push(pagePaths.publicPages.emailLogin)}
-        >
-          {t(PhrasesTranslationKeys.LoginWithEmail)}
-        </Button>
-        <Button
-          size="large"
-          onClick={() => router.push(pagePaths.publicPages.signUp)}
-          sx={{
-            backgroundColor: "initial",
-            border: (t) => `1px solid ${t.palette.white[600]}`,
-            color: (t) => t.palette.white[900],
-          }}
-        >
-          {t(PhrasesTranslationKeys.CreateNewAccount)}
-        </Button>
+    <AuthLayout>
+      <Stack width="100%" spacing={4}>
+        <Stack width="100%">
+          <Typography
+            variant="h5"
+            marginTop={16}
+            sx={{ color: theme.palette.surface_emphasis.high }}
+            lineHeight="32px"
+          >
+            {t(PhrasesTranslationKeys.WelcomeToFieldBee).toString()}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: theme.palette.surface_emphasis.medium }}
+          >
+            {t(PhrasesTranslationKeys.PleaseLogInToContinue).toString()}
+          </Typography>
+        </Stack>
+        <Link href="" width={"100%"} sx={{ textDecoration: "none" }}>
+          <GoogleButton imageSrc="/static/google-logo.svg">
+            {t(PhrasesTranslationKeys.LoginWithGoogle)}
+          </GoogleButton>
+        </Link>
         <div>
           <Divider
             sx={{
-              color: "#CAC4D0",
+              color: theme.palette.surface_emphasis.medium,
               fontVariant: "all-small-caps",
               "&:before, :after": {
-                borderColor: (t) => t.palette.white[300],
+                borderColor: (t) => t.palette.outline.main,
               },
+              width: "95%",
+              margin: "auto",
             }}
           >
             {t(SingleWordsTranslationKeys.Or).toString()}
           </Divider>
         </div>
-        <Link sx={{ width: "100%" }} href="">
-          <GoogleButton imageSrc="/static/google-logo.svg">
-            {t(PhrasesTranslationKeys.LoginWithGoogle)}
-          </GoogleButton>
-        </Link>
+        <Stack width="100%">
+          <LoginForm
+            loading={isLoading}
+            onSubmit={onLogin}
+            errorMessage={errorMessage}
+          />
+        </Stack>
+
+        <Stack
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          spacing={0}
+          gap={1}
+        >
+          <Typography
+            variant="body1"
+            sx={{ color: theme.palette.surface_emphasis.medium }}
+          >
+            {t(PhrasesTranslationKeys.DontHaveAnAccount).toString()}
+          </Typography>
+          <Link
+            href={pagePaths.publicPages.signUp}
+            color={theme.palette.primary.main}
+            underline="none"
+            fontSize="16px"
+          >
+            {t(PhrasesTranslationKeys.CreateAccount)}
+          </Link>
+        </Stack>
       </Stack>
     </AuthLayout>
   );

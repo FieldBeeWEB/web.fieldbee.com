@@ -7,15 +7,16 @@ type Props = {
 export const MapButton = ({ active, ...props }: Props) => {
   return (
     <Stack
-      sx={(theme)=>({
+      sx={(theme) => ({
         height: "48px",
         width: "48px",
         cursor: "pointer",
-        background: theme.palette.secondary_shades[200],
+        background: theme.palette.elevation_overlay["08dp"],
         fontSize: "14px",
-        borderRadius: "40px",
-        border: active ? `1px solid ${theme.palette.primary.main}` : `1px solid ${theme.palette.secondary_shades[400]}`,
-        color: active ? theme.palette.primary.main : "white",
+        borderRadius: "4px",
+        color: active
+          ? theme.palette.surface_emphasis.disabled
+          : theme.palette.surface_emphasis.high,
       })}
       spacing="8"
       direction="row"

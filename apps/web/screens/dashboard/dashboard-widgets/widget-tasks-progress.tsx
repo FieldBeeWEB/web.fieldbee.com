@@ -1,21 +1,21 @@
+import { MeasurementType } from "@fieldbee/api";
 import { Stack, theme } from "@fieldbee/ui";
 import { Gauge, gaugeClasses } from "@fieldbee/ui/charts";
 import { Button, Typography } from "@fieldbee/ui/components";
 import { Check } from "@fieldbee/ui/icons";
+import { t } from "i18next";
 import { useState } from "react";
-import WidgetWrapper from "./widget-wrapper";
+import { getMeasurementString } from "../../../helpers/format-area";
+import {
+  PhrasesTranslationKeys,
+  SingleWordsTranslationKeys,
+} from "../../../localization";
 import {
   IWidgetTasksProgressData,
   IWidgetTasksProgressDataItem,
 } from "../utils/dashboard-helper";
 import WidgetLoader from "./widget-loader";
-import { getMeasurementString } from "../../../helpers/format-area";
-import { MeasurementType } from "@fieldbee/api";
-import { t } from "i18next";
-import {
-  PhrasesTranslationKeys,
-  SingleWordsTranslationKeys,
-} from "../../../localization";
+import WidgetWrapper from "./widget-wrapper";
 
 interface IWidgetTasksProgress {
   data: IWidgetTasksProgressData | undefined;
@@ -45,14 +45,10 @@ const WidgetTasksProgress = ({
   };
 
   return (
-    <WidgetWrapper gap={1.5} spacing={0} height={"100%"} minHeight={262}>
+    <WidgetWrapper gap={1.5} spacing={0} height={"100%"} minHeight={280}>
       <Typography
-        sx={{
-          color: theme.palette.white[700],
-          fontSize: "14px",
-          fontWeight: 500,
-          lineHeight: "20px",
-        }}
+        variant="subtitle2"
+        color={theme.palette.surface_emphasis.medium}
       >
         {t(PhrasesTranslationKeys.AllTasks).toString()}
       </Typography>
@@ -75,7 +71,7 @@ const WidgetTasksProgress = ({
                 key={task.label}
                 sx={{
                   width: "100%",
-                  height: 160,
+                  height: 170,
                   margin: 0,
                   padding: "10px 0",
                 }}
@@ -106,18 +102,16 @@ const WidgetTasksProgress = ({
                       fill: task.color,
                     },
                     [`& .${gaugeClasses.valueText}`]: {
-                      fontSize: "22px",
-                      lineHeight: "28px",
+                      fontSize: "20px",
+                      fontWeight: 500,
+                      lineHeight: "24px",
                     },
                   })}
                 />
                 <Typography
-                  sx={{
-                    color: theme.palette.white[700],
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    textAlign: "center",
-                  }}
+                  variant="body1"
+                  color={theme.palette.surface_emphasis.medium}
+                  textAlign="center"
                 >
                   {task.label}
                 </Typography>
@@ -134,23 +128,28 @@ const WidgetTasksProgress = ({
                 sx={{
                   background:
                     taskFilter === taskFilterName
-                      ? theme.palette.secondary_shades[300]
+                      ? theme.palette.primary_states.selected
                       : "",
-                  color:
-                    taskFilter === taskFilterName
-                      ? theme.palette.white[900]
-                      : theme.palette.white[600],
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  lineHeight: "20px",
-                  textTransform: "capitalize",
-                  border: `1px solid ${taskFilter === taskFilterName ? theme.palette.secondary_shades[300] : theme.palette.secondary_shades[400]}`,
+                  border: `1px solid ${taskFilter === taskFilterName ? theme.palette.primary_states.selected : theme.palette.outline.main}`,
                   ":hover": {
-                    background: theme.palette.secondary_shades[300],
+                    background:
+                      taskFilter === taskFilterName
+                        ? theme.palette.primary_states.selected
+                        : theme.palette.primary_states.hover,
                   },
                 }}
               >
-                {taskFiltersTranslation[taskFilterName]}
+                <Typography
+                  variant="body2"
+                  color={
+                    taskFilter === taskFilterName
+                      ? theme.palette.primary.main
+                      : theme.palette.surface_emphasis.medium
+                  }
+                  textTransform="capitalize"
+                >
+                  {taskFiltersTranslation[taskFilterName]}
+                </Typography>
               </Button>
             ))}
           </Stack>

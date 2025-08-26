@@ -1,55 +1,55 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
 import {
-	queryKeys,
-	useGetProfile,
-	useQueryClient,
-	useUpdateProfileInfo,
-} from '@fieldbee/api'
-import { Loader } from '@fieldbee/ui'
-import { format } from 'date-fns'
-import { t } from 'i18next'
-import { DATE_FORMAT } from '../../../helpers/date-format'
-import { toast } from '../../../helpers/toast'
-import { PhrasesTranslationKeys } from '../../../localization'
-import AccountForm, { AccountFormSchema } from './account-form'
+  queryKeys,
+  useGetProfile,
+  useQueryClient,
+  useUpdateProfileInfo,
+} from "@fieldbee/api";
+import { Loader } from "@fieldbee/ui";
+import { format } from "date-fns";
+import { t } from "i18next";
+import { DATE_FORMAT } from "../../../helpers/date-format";
+import { toast } from "../../../helpers/toast";
+import { PhrasesTranslationKeys } from "../../../localization";
+import AccountForm, { AccountFormSchema } from "./account-form";
 
 export default function AccountPanel() {
-	const queryClient = useQueryClient()
-	const { isLoading, data } = useGetProfile()
-	const { mutateAsync: updateProfile, isLoading: isUpdating } =
-		useUpdateProfileInfo()
+  const queryClient = useQueryClient();
+  const { isLoading, data } = useGetProfile();
+  const { mutateAsync: updateProfile, isLoading: isUpdating } =
+    useUpdateProfileInfo();
 
-	const onAccountUpdate = async (values: AccountFormSchema) => {
-		await updateProfile(
-			{
-				...values,
-				birthday: values.birthday
-					? format(values.birthday, DATE_FORMAT)
-					: undefined,
-				gender:
-					values.gender && values.gender.length > 0 ? values.gender : undefined,
-				photoPath: data?.photoPath,
-				uri: data?.uri,
-			},
-			{
-				onSuccess: async () => {
-					await queryClient.refetchQueries({
-						queryKey: queryKeys.getProfile,
-					})
-				},
-				onError: () => {
-					toast.error(t(PhrasesTranslationKeys.SomethingWentWrong))
-				},
-			}
-		)
-	}
-	if (isLoading) {
-		return <Loader margin='auto' />
-	}
+  const onAccountUpdate = async (values: AccountFormSchema) => {
+    await updateProfile(
+      {
+        ...values,
+        birthday: values.birthday
+          ? format(values.birthday, DATE_FORMAT)
+          : undefined,
+        gender:
+          values.gender && values.gender.length > 0 ? values.gender : undefined,
+        photoPath: data?.photoPath,
+        uri: data?.uri,
+      },
+      {
+        onSuccess: async () => {
+          await queryClient.refetchQueries({
+            queryKey: queryKeys.getProfile,
+          });
+        },
+        onError: () => {
+          toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
+        },
+      },
+    );
+  };
+  if (isLoading) {
+    return <Loader margin="auto" />;
+  }
 
-	return (
-		<>
-			{/* {data && (
+  return (
+    <>
+      {/* {data && (
 				<Stack
 					direction='row'
 					alignItems='center'
@@ -73,13 +73,13 @@ export default function AccountPanel() {
 					</Stack>
 				</Stack>
 			)} */}
-			{data && (
-				<AccountForm
-					loading={isUpdating}
-					onSubmit={onAccountUpdate}
-					profileData={data}
-				/>
-			)}
-		</>
-	)
+      {data && (
+        <AccountForm
+          loading={isUpdating}
+          onSubmit={onAccountUpdate}
+          profileData={data}
+        />
+      )}
+    </>
+  );
 }

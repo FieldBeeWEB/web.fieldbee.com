@@ -39,7 +39,7 @@ export default function FieldsList({
             item,
           ],
         }),
-        {}
+        {},
       );
 
   const fieldGroupNames = Object.keys(groupedFields);

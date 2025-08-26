@@ -25,14 +25,9 @@ const WidgetLoader = ({
     >
       <Loader size={size} margin={loaderMargin} />
       <Typography
-        sx={{
-          color: theme.palette.white[700],
-          fontSize: "16px",
-          fontWeight: 400,
-          lineHeight: "24px",
-          textAlign: "center",
-          marginTop: "12px",
-        }}
+        variant="body1"
+        marginX="auto"
+        color={theme.palette.surface_emphasis.medium}
       >
         {text}
       </Typography>

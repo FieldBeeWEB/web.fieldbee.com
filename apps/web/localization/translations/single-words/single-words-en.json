@@ -1,7 +1,7 @@
 {
 	"dashboard": "Dashboard",
 	"password": "Password",
-	"login": "Login",
+	"login": "Log in",
 	"map": "Map",
 	"fields": "Fields",
 	"tasks": "Tasks",
@@ -56,5 +56,10 @@
 	"view-mode": "View Mode",
 	"export": "Export",
 	"actions": "Actions",
-	"profile": "Profile"
+	"profile": "Profile",
+	"hello": "Hello",
+	"normal": "Normal",
+	"satellite": "Satellite",
+	"hybrid": "Hybrid",
+	"dark": "Dark"
 }

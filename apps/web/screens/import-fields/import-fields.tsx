@@ -78,7 +78,7 @@ const ImportFields = () => {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -92,7 +92,7 @@ const ImportFields = () => {
             padding={1}
             spacing={1}
             sx={(theme) => ({
-              borderRight: `1px solid ${theme.palette.secondary_shades[300]}`,
+              borderRight: `1px solid ${theme.palette.background.default}`,
             })}
           >
             <Stack

@@ -40,38 +40,40 @@ const EditSoilForm: React.FunctionComponent<Props> = ({
       n:
         (chemicals &&
           chemicals.filter(
-            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "N"
+            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "N",
           )[0]?.propertyValueFloat) ||
         undefined,
       p2o5:
         (chemicals &&
           chemicals.filter(
             (x) =>
-              x.propertyTypeName === "Chemical" && x.propertyName === "P2O5"
+              x.propertyTypeName === "Chemical" && x.propertyName === "P2O5",
           )[0]?.propertyValueFloat) ||
         undefined,
       k2o:
         (chemicals &&
           chemicals.filter(
-            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "K2O"
+            (x) =>
+              x.propertyTypeName === "Chemical" && x.propertyName === "K2O",
           )[0]?.propertyValueFloat) ||
         undefined,
       mgo:
         (chemicals &&
           chemicals.filter(
-            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "MgO"
+            (x) =>
+              x.propertyTypeName === "Chemical" && x.propertyName === "MgO",
           )[0]?.propertyValueFloat) ||
         undefined,
       s:
         (chemicals &&
           chemicals.filter(
-            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "S"
+            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "S",
           )[0]?.propertyValueFloat) ||
         undefined,
       ph:
         (chemicals &&
           chemicals.filter(
-            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "pH"
+            (x) => x.propertyTypeName === "Chemical" && x.propertyName === "pH",
           )[0]?.propertyValueFloat) ||
         undefined,
     },

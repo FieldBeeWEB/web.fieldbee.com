@@ -31,14 +31,14 @@ export default function SetNewPassword() {
         {
           onSuccess: () => {
             toast.success(
-              t(PhrasesTranslationKeys.PasswordChangedSuccessfully)
+              t(PhrasesTranslationKeys.PasswordChangedSuccessfully),
             );
             router.push(pagePaths.publicPages.login);
           },
           onError: () => {
             toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
           },
-        }
+        },
       );
     }
   };
@@ -62,7 +62,7 @@ export default function SetNewPassword() {
           </Link>
           <Link
             href={`mailto:info@efarmer.mobi?Subject=${t(
-              PhrasesTranslationKeys.PasswordRecovery
+              PhrasesTranslationKeys.PasswordRecovery,
             )}`}
           >
             {t(PhrasesTranslationKeys.ContactSupport)}

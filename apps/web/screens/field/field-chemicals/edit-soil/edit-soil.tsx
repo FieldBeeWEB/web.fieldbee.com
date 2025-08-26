@@ -35,6 +35,7 @@ interface NameValue {
   value: number;
   status: Status;
 }
+
 export default function EditSoil({
   chemicals,
   chemicalProperties,
@@ -51,7 +52,7 @@ export default function EditSoil({
     chemicalProperties?.map((x) => {
       const existingProperty = chemicals?.find(
         (chemical) =>
-          chemical.propertyName.toLowerCase() === x.propertyName.toLowerCase()
+          chemical.propertyName.toLowerCase() === x.propertyName.toLowerCase(),
       );
       if (existingProperty) {
         return {
@@ -78,7 +79,7 @@ export default function EditSoil({
     const toSend: NameValue[] = Object.entries(values).map(([key, value]) => {
       if (
         chemicals?.find(
-          (it) => it.propertyName.toLowerCase() === key.toLowerCase()
+          (it) => it.propertyName.toLowerCase() === key.toLowerCase(),
         )
       ) {
         return {
@@ -97,7 +98,7 @@ export default function EditSoil({
     const apiSend: FieldChemical[] = toSend.map((tt) => {
       const fullObj = fieldChemicalsWithStatus?.find(
         (chemical) =>
-          chemical.propertyName.toLowerCase() === tt.propertyName.toLowerCase()
+          chemical.propertyName.toLowerCase() === tt.propertyName.toLowerCase(),
       );
       return {
         document: {

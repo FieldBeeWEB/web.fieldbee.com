@@ -62,7 +62,7 @@ export default function EditCropHistory({
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 

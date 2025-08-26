@@ -40,20 +40,20 @@ export default function ChangePhoto() {
                   onError: () => {
                     toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
                   },
-                }
+                },
               );
             },
             onError: () => {
               toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
             },
-          }
+          },
         );
       }
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
     },
-    []
+    [],
   );
 
   return (

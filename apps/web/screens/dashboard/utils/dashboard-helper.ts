@@ -1,6 +1,5 @@
 import { FieldsResponse } from "@fieldbee/api";
-import { t } from "i18next";
-import { PhrasesTranslationKeys } from "../../../localization";
+import { theme } from "@fieldbee/ui";
 import {
   FertilizingIcon,
   HarvestingIcon,
@@ -9,6 +8,8 @@ import {
   TillingIcon,
 } from "@fieldbee/ui/custom-icons/tasks";
 import OtherIcon from "@fieldbee/ui/custom-icons/tasks/OtherIcon";
+import { t } from "i18next";
+import { PhrasesTranslationKeys } from "../../../localization";
 
 export interface IWidgetTasksProgressDataItem {
   label: string;
@@ -133,19 +134,31 @@ export const getWidgetTasksProgressData = (
 
   return {
     amount: [
-      createAmountData("OPEN", "OPEN", "#03A9F4"),
-      createAmountData("IN_WORK_ON_FO", "IN_WORK_ON_FO", "#FFA726"),
-      createAmountData("EXECUTED", "EXECUTED", "#66BB6A"),
+      createAmountData("OPEN", "OPEN", theme.palette.additional.blue),
+      createAmountData(
+        "IN_WORK_ON_FO",
+        "IN_WORK_ON_FO",
+        theme.palette.additional.honey,
+      ),
+      createAmountData("EXECUTED", "EXECUTED", theme.palette.additional.green),
     ],
     area: [
-      createAreaData("OPEN", "OPEN", "#03A9F4"),
-      createAreaData("IN_WORK_ON_FO", "IN_WORK_ON_FO", "#FFA726"),
-      createAreaData("EXECUTED", "EXECUTED", "#66BB6A"),
+      createAreaData("OPEN", "OPEN", theme.palette.additional.blue),
+      createAreaData(
+        "IN_WORK_ON_FO",
+        "IN_WORK_ON_FO",
+        theme.palette.additional.honey,
+      ),
+      createAreaData("EXECUTED", "EXECUTED", theme.palette.additional.green),
     ],
     percent: [
-      createPercentData("OPEN", "OPEN", "#03A9F4"),
-      createPercentData("IN_WORK_ON_FO", "IN_WORK_ON_FO", "#FFA726"),
-      createPercentData("EXECUTED", "EXECUTED", "#66BB6A"),
+      createPercentData("OPEN", "OPEN", theme.palette.additional.blue),
+      createPercentData(
+        "IN_WORK_ON_FO",
+        "IN_WORK_ON_FO",
+        theme.palette.additional.honey,
+      ),
+      createPercentData("EXECUTED", "EXECUTED", theme.palette.additional.green),
     ],
   };
 };

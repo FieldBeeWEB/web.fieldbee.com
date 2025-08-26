@@ -1,24 +1,72 @@
 import { ThemeProvider as MThemeProvider } from '@mui/material'
-import { createTheme, Theme, ThemeOptions } from '@mui/material/styles'
+import {
+	createTheme,
+	PaletteColorOptions,
+	Theme,
+	ThemeOptions,
+} from '@mui/material/styles'
 import React from 'react'
 
 declare module '@mui/material/styles' {
-	interface Palette {
-		mix: Palette['primary']
-		link: Palette['primary']
-		primary_shades: Partial<Palette['grey']>
-		secondary_shades: Partial<Palette['grey']>
-		mix_shades: Partial<Palette['grey']>
-		white: Partial<Palette['grey']>
-	}
+	interface Palette extends PaletteOptions {}
 
 	interface PaletteOptions {
-		mix: PaletteOptions['primary']
-		link: PaletteOptions['primary']
-		primary_shades: Partial<Palette['grey']>
-		secondary_shades: Partial<Palette['grey']>
-		mix_shades: Partial<Palette['grey']>
-		white: Partial<Palette['grey']>
+		primary_shades: PaletteColorOptions
+		primary_emphasis: {
+			high: string
+			medium: string
+			disabled: string
+		}
+		primary_states: {
+			hover: string
+			focused: string
+			pressed: string
+			dragged: string
+			selected: string
+		}
+		surface_emphasis: {
+			high: string
+			medium: string
+			disabled: string
+		}
+		surface_states: {
+			hover: string
+			focused: string
+			pressed: string
+			dragged: string
+			selected: string
+		}
+		elevation_overlay: {
+			'01dp': string
+			'02dp': string
+			'03dp': string
+			'04dp': string
+			'06dp': string
+			'08dp': string
+			'12dp': string
+			'16dp': string
+			'24dp': string
+		}
+		additional: {
+			brown: string
+			red: string
+			orange: string
+			honey: string
+			yellow: string
+			khaki: string
+			green: string
+			laguna: string
+			blue: string
+			purple: string
+			pink: string
+			gray: string
+		}
+		surface: {
+			main: string
+		}
+		outline: {
+			main: string
+		}
 	}
 }
 
@@ -26,83 +74,83 @@ export const theme: Theme = createTheme({
 	palette: {
 		mode: 'dark',
 		primary: {
-			main: '#FFD833',
+			main: '#FFC34B',
 		},
 		primary_shades: {
-			200: '#FFDC51',
-			300: '#FFE06A',
-			400: '#FFE581',
-			500: '#FFE996',
-			600: '#FFEDAB',
+			900: '#6E4600',
+			800: '#8F5D00',
+			700: '#B37400',
+			600: '#CC8500',
+			500: '#E19500',
+			400: '#F5A10D',
+			300: '#FFB627',
+			200: '#FFC34B',
+			100: '#FFD38A',
+			50: '#FFEBCD',
 		},
-		secondary: {
-			main: '#151515',
+		primary_emphasis: {
+			high: '#1C1C1C',
+			medium: '#1C1C1CBD',
+			disabled: '#1C1C1C61',
 		},
-		secondary_shades: {
-			200: '#2A2A2A',
-			300: '#414141',
-			400: '#595959',
-			500: '#727272',
-			600: '#8D8D8D',
+		primary_states: {
+			hover: '#FFC34B0A',
+			focused: '#FFC34B1F',
+			pressed: '#FFC34B1F',
+			dragged: '#FFC34B1F',
+			selected: '#FFC34B14',
 		},
-		mix: {
-			main: '#29251A',
+		error: {
+			main: '#FF6F5E',
 		},
-		link: {
-			main: '#CAC4D0',
+		background: {
+			default: '#121212',
 		},
-		mix_shades: {
-			200: '#3D392F',
-			300: '#534F45',
-			400: '#69665D',
-			500: '#817D76',
-			600: '#999690',
+		surface: {
+			main: '#1B1B1B',
 		},
-		white: {
-			900: 'rgba(255, 255, 255, 0.9)',
-			800: 'rgba(255, 255, 255, 0.8)',
-			700: 'rgba(255, 255, 255, 0.7)',
-			600: 'rgba(255, 255, 255, 0.6)',
-			500: 'rgba(255, 255, 255, 0.5)',
-			400: 'rgba(255, 255, 255, 0.4)',
-			300: 'rgba(255, 255, 255, 0.3)',
+		surface_emphasis: {
+			high: '#FFFFFFDE',
+			medium: '#FFFFFF99',
+			disabled: '#FFFFFF61',
 		},
-	},
-	components: {
-		MuiTypography: {
-			styleOverrides: {
-				root: ({ theme }) => ({
-					color: theme.palette.white[800],
-				}),
-			},
+		surface_overlay: {
+			main: '#FFFFFF1F',
 		},
-		MuiTabs: {
-			styleOverrides: {
-				root: ({ theme }) => ({
-					borderColor: theme.palette.secondary_shades[300],
-				}),
-			},
+		surface_states: {
+			hover: '#FFFFFF0A',
+			focused: '#FFFFFF1F',
+			pressed: '#FFFFFF1A',
+			dragged: '#FFFFFF1F',
+			selected: '#FFFFFF14',
 		},
-		MuiLink: {
-			styleOverrides: {
-				root: ({ theme }) => ({
-					color: theme.palette.link.main,
-				}),
-			},
+		outline: {
+			main: '#FFFFFF3D',
 		},
-		MuiAppBar: {
-			styleOverrides: {
-				root: ({ theme }) => ({
-					backgroundColor: theme.palette.secondary_shades[200],
-				}),
-			},
+		elevation_overlay: {
+			'01dp': '#262626',
+			'02dp': '#2B2B2B',
+			'03dp': '#2D2D2D',
+			'04dp': '#303030',
+			'06dp': '#343434',
+			'08dp': '#363636',
+			'12dp': '#3B3B3B',
+			'16dp': '#3D3D3D',
+			'24dp': '#3F3F3F',
 		},
-		MuiDrawer: {
-			styleOverrides: {
-				paper: ({ theme }) => ({
-					backgroundColor: theme.palette.secondary_shades[200],
-				}),
-			},
+		additional: {
+			brown: '#8C6347',
+			red: '#EC5C4F',
+			orange: '#FF771C',
+			honey: '#FFB640',
+			yellow: '#FFDB45',
+			khaki: 'C9C569',
+			green: '#A1C45A',
+			laguna: '#69C9A1',
+			blue: '#6BBDFF',
+			purple: '#7D8CF6',
+			pink: '#F28CFF',
+			gray: '#B6B8BD',
 		},
 	},
 } as ThemeOptions)

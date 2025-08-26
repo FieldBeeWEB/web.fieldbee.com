@@ -16,7 +16,7 @@ interface Props {
 
 export default function GenerateFieldsReport({ uris }: Props) {
   const { triggerMultipleDownload } = React.useContext(
-    BackgroundDownloadContext
+    BackgroundDownloadContext,
   );
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

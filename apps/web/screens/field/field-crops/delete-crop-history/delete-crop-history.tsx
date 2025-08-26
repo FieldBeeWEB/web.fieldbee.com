@@ -42,7 +42,7 @@ export default function DeleteCropHistory({ uri, fieldUri }: Props) {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -67,7 +67,7 @@ export default function DeleteCropHistory({ uri, fieldUri }: Props) {
             <Stack spacing={2}>
               <Typography padding="0 16px">
                 {t(
-                  SentencesTranslationKeys.DoYouReallyWantToDeleteThisCropHistory
+                  SentencesTranslationKeys.DoYouReallyWantToDeleteThisCropHistory,
                 )}
                 ?
               </Typography>
@@ -76,7 +76,7 @@ export default function DeleteCropHistory({ uri, fieldUri }: Props) {
                 direction="row"
                 padding="16px"
                 sx={(theme) => ({
-                  borderTop: `1px solid ${theme.palette.secondary_shades[200]}`,
+                  borderTop: `1px solid ${theme.palette.background.default}`,
                 })}
                 spacing={1}
               >

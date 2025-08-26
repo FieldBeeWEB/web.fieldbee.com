@@ -3,7 +3,7 @@ import { Fill, Stroke, Text } from "ol/style.js";
 function stringDivider(
   str: string,
   width: number,
-  spaceReplacer: string
+  spaceReplacer: string,
 ): string {
   if (str.length > width) {
     let p = width;

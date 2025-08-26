@@ -11,6 +11,7 @@ const TileLayer = ({ source, zIndex = 0 }: any) => {
       source,
       zIndex,
     });
+
     map.addLayer(tileLayer);
     tileLayer.setZIndex(zIndex);
     return () => {

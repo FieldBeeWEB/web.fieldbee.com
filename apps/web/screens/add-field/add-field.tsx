@@ -128,8 +128,6 @@ export default function AddField() {
               <ExpandBadge
                 onClick={() => handleExpanded()}
                 expanded={expanded}
-                expandedLabel="Hide details"
-                narrowedLabel="Show details"
               />
               <MapContent measurementActive={measurementActive}>
                 <DrawLayer

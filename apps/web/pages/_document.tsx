@@ -17,7 +17,7 @@ export default function Document(props: DocumentProps & DocumentHeadTagsProps) {
 	return (
 		<Html>
 			<Head>
-				<meta name='theme-color' content='#151515' />
+				<meta name='theme-color' content={theme.palette.background.default} />
 				<link rel='shortcut icon' href='/static/favicon.ico' />
 				<link
 					rel='apple-touch-icon'
@@ -30,7 +30,9 @@ export default function Document(props: DocumentProps & DocumentHeadTagsProps) {
 				style={{
 					margin: 0,
 					fontFamily: "'Roboto','Helvetica','Arial',sans-serif",
-					backgroundColor: theme.palette.secondary_shades[200],
+					backgroundColor: theme.palette.surface.main,
+					WebkitFontSmoothing: 'antialiased',
+					MozOsxFontSmoothing: 'grayscale',
 				}}
 			>
 				<Main />

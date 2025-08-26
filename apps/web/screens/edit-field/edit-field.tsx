@@ -29,7 +29,7 @@ export default function EditField() {
 
   const { uri } = router.query;
   const { data } = useGetOrganizationFieldsWithGeometry(
-    uri ? [uri.toString()] : null
+    uri ? [uri.toString()] : null,
   );
   const [coordinates, setCoordinates] = React.useState<string>("");
 
@@ -55,18 +55,18 @@ export default function EditField() {
           });
           await queryClient.refetchQueries({
             queryKey: queryKeys.getFieldsWithGeometry(
-              uri ? [uri.toString()] : []
+              uri ? [uri.toString()] : [],
             ),
           });
           router.push(
-            `${pagePaths.authPages.field("1", uri?.toString() || "")}`
+            `${pagePaths.authPages.field("1", uri?.toString() || "")}`,
           );
           toast.success("Field updated successfully");
         },
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -116,8 +116,6 @@ export default function EditField() {
               <ExpandBadge
                 onClick={() => handleExpanded()}
                 expanded={expanded}
-                expandedLabel="Hide details"
-                narrowedLabel="Show details"
               />
               <MapContent measurementActive={measurementActive}>
                 {uri && (

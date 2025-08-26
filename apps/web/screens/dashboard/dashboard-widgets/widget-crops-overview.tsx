@@ -1,18 +1,18 @@
+import { MeasurementType } from "@fieldbee/api";
 import { Stack, theme } from "@fieldbee/ui";
 import ChartBar from "@fieldbee/ui/ChartBar";
 import { Typography } from "@fieldbee/ui/components";
-import WidgetWrapper from "./widget-wrapper";
-import { ICropItem } from "../utils/dashboard-helper";
-import { getMeasurementString } from "../../../helpers/format-area";
-import { MeasurementType } from "@fieldbee/api";
-import WidgetLoader from "./widget-loader";
-import WidgetEmptyData from "./widget-empty-data";
 import { t } from "i18next";
+import { getMeasurementString } from "../../../helpers/format-area";
 import {
   PhrasesTranslationKeys,
   SentencesTranslationKeys,
   SingleWordsTranslationKeys,
 } from "../../../localization";
+import { ICropItem } from "../utils/dashboard-helper";
+import WidgetEmptyData from "./widget-empty-data";
+import WidgetLoader from "./widget-loader";
+import WidgetWrapper from "./widget-wrapper";
 
 interface IWidgetCropsOverview {
   data: ICropItem[];
@@ -38,12 +38,8 @@ const WidgetCropsOverview = ({
   return (
     <WidgetWrapper gap={1.5} spacing={0} minHeight={360}>
       <Typography
-        sx={{
-          color: theme.palette.white[700],
-          fontSize: "14px",
-          fontWeight: 500,
-          lineHeight: "20px",
-        }}
+        variant="subtitle2"
+        color={theme.palette.surface_emphasis.medium}
       >
         {t(SingleWordsTranslationKeys.Crops).toString()}
       </Typography>
@@ -73,12 +69,8 @@ const WidgetCropsOverview = ({
                   }}
                 ></Typography>
                 <Typography
-                  sx={{
-                    color: theme.palette.white[700],
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "24px",
-                  }}
+                  variant="body1"
+                  color={theme.palette.surface_emphasis.medium}
                 >
                   {crop.cropName}
                 </Typography>
@@ -89,22 +81,14 @@ const WidgetCropsOverview = ({
                 justifyContent={"space-around"}
               >
                 <Typography
-                  sx={{
-                    color: theme.palette.white[700],
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "24px",
-                  }}
+                  variant="body1"
+                  color={theme.palette.surface_emphasis.medium}
                 >
                   {getMeasurementString(crop.areaSi, MeasurementType.AREA)}
                 </Typography>
                 <Typography
-                  sx={{
-                    color: theme.palette.white[700],
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "24px",
-                  }}
+                  variant="body1"
+                  color={theme.palette.surface_emphasis.medium}
                 >
                   {crop.percentage}%
                 </Typography>

@@ -12,6 +12,7 @@ interface Props {
   handleSelectGroup: (groupName: string) => void;
   selectedGroup: string;
 }
+
 export default function FieldGroup({
   group,
   name,
@@ -40,7 +41,7 @@ export default function FieldGroup({
         <Typography variant="caption">
           {getMeasurementString(
             group.map((x) => x.areaSi).reduce((a, b) => a + b, 0),
-            MeasurementType.AREA
+            MeasurementType.AREA,
           )}
         </Typography>
       </Stack>

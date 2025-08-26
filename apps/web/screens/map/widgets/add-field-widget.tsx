@@ -10,6 +10,7 @@ enum PlusButtonActionKeys {
   IMPORT_FIELDS = "import-fields",
   DRAW_FIELD = "draw-field",
 }
+
 const actions = [
   {
     icon: <Upload />,
@@ -39,16 +40,7 @@ const AddFieldWidget = () => {
 
   return (
     <>
-      <Button
-        onClick={handleClick}
-        startIcon={<Add />}
-        sx={{
-          position: "absolute",
-          bottom: "32px",
-          right: 16,
-          zIndex: 30,
-        }}
-      >
+      <Button onClick={handleClick} startIcon={<Add />}>
         Add field
       </Button>
       <SmallMenu

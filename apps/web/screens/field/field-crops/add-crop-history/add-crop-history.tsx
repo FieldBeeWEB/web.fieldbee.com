@@ -51,7 +51,7 @@ export default function AddCropHistory({ fieldUri }: Props) {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -61,8 +61,8 @@ export default function AddCropHistory({ fieldUri }: Props) {
         onClick={handleOpen}
         sx={{
           backgroundColor: "initial",
-          border: (t) => `1px solid ${t.palette.white[600]}`,
-          color: (t) => t.palette.white[900],
+          border: (t) => `1px solid ${t.palette.surface_emphasis.medium}`,
+          color: (t) => t.palette.surface_emphasis.high,
         }}
       >
         {t(PhrasesTranslationKeys.AddNewCrop)}

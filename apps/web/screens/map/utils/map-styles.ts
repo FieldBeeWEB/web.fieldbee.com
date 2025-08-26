@@ -1,26 +1,60 @@
 import { Circle, Fill, Stroke, Style, Text } from "ol/style";
 import CircleStyle from "ol/style/Circle";
+import { theme } from "@fieldbee/ui";
 
-export const basicLayerStyle = new Style({
-  fill: new Fill({
-    color: "rgba(255, 216, 51, 0.5)",
-  }),
-  stroke: new Stroke({
-    color: "#FFD833",
-    width: 2,
+export const defaultLabelStyle = new Style({
+  text: new Text({
+    font: "16px Calibri, sans-serif",
+    fill: new Fill({
+      color: theme.palette.surface.main,
+    }),
+    padding: [4, 10, 4, 10],
+    backgroundFill: new Fill({
+      color: theme.palette.surface_emphasis.medium,
+    }),
   }),
 });
 
-export const basicLabelStyle = new Style({
+export const selectedLabelStyle = new Style({
   text: new Text({
-    font: "24px Calibri,sans-serif",
+    font: "16px Calibri, sans-serif",
     fill: new Fill({
-      color: "#151515",
+      color: theme.palette.primary_emphasis.high,
     }),
-    padding: [2, 2, 2, 2],
+    padding: [4, 10, 4, 10],
     backgroundFill: new Fill({
-      color: "#FFD833",
+      color: theme.palette.primary.main,
     }),
+  }),
+});
+
+export const defaultBasicLayerStyle = new Style({
+  fill: new Fill({
+    color: "rgba(0, 0, 0, 0.16)",
+  }),
+  stroke: new Stroke({
+    color: "#000000",
+    width: 1,
+  }),
+});
+
+export const defaultSatelliteLayerStyle = new Style({
+  fill: new Fill({
+    color: "rgba(255, 255, 255, 0.16)",
+  }),
+  stroke: new Stroke({
+    color: "#FFFFFF",
+    width: 1,
+  }),
+});
+
+export const selectedLayerStyle = new Style({
+  fill: new Fill({
+    color: "rgba(255, 195, 75, 0.20)",
+  }),
+  stroke: new Stroke({
+    color: theme.palette.primary.main,
+    width: 2,
   }),
 });
 

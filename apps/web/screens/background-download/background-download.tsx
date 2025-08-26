@@ -55,7 +55,7 @@ const BackgroundDownloadProvider: React.FunctionComponent<Props> = ({
                   onError: () => {
                     toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
                   },
-                }
+                },
               );
             }, 2000);
           },
@@ -80,7 +80,7 @@ const BackgroundDownloadProvider: React.FunctionComponent<Props> = ({
                   onError: () => {
                     toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
                   },
-                }
+                },
               );
             }, 2000);
           },
@@ -90,7 +90,7 @@ const BackgroundDownloadProvider: React.FunctionComponent<Props> = ({
         });
       },
     }),
-    [generateExport, generateReport, getExportResult, getReportResult]
+    [generateExport, generateReport, getExportResult, getReportResult],
   );
 
   return (

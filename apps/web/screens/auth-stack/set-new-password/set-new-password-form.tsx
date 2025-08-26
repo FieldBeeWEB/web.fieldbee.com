@@ -43,7 +43,7 @@ const SetNewPasswordForm: React.FunctionComponent<Props> = ({
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
   };
@@ -69,7 +69,7 @@ const SetNewPasswordForm: React.FunctionComponent<Props> = ({
                 <InputAdornment position="end">
                   <IconButton
                     aria-label={t(
-                      PhrasesTranslationKeys.TogglePasswordVisibility
+                      PhrasesTranslationKeys.TogglePasswordVisibility,
                     ).toString()}
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}

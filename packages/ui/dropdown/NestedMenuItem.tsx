@@ -149,15 +149,15 @@ const DropdownNestedMenuItem = React.forwardRef<MProps, NestedMenuItemProps>(
 							boxShadow: '0px 2px 6px 2px #00000026',
 						},
 						'& .MuiList-root': {
-							background: theme.palette.secondary_shades[300],
+							background: theme.palette.background.default,
 						},
 						'& .Mui-selected': {
-							backgroundColor: `${theme.palette.secondary_shades[400]} !important`,
+							backgroundColor: `${theme.palette.background.default} !important`,
 						},
 						'& .MuiMenuItem-root': {
 							padding: '16px 12px',
 							'&:hover': {
-								backgroundColor: theme.palette.secondary_shades[400],
+								backgroundColor: theme.palette.background.default,
 							},
 						},
 					})}

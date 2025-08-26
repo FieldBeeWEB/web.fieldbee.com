@@ -1,7 +1,7 @@
-import { Button, Stack } from "@fieldbee/ui";
+import { Button, Stack, theme } from "@fieldbee/ui";
 import { t } from "i18next";
 
-import ClearableInput from "@fieldbee/ui/form/input/ClearableInput";
+import BaseInput from "@fieldbee/ui/form/input/BaseInput";
 import PasswordInput from "@fieldbee/ui/form/input/PasswordInput";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as React from "react";
@@ -13,6 +13,7 @@ import {
   SentencesTranslationKeys,
   SingleWordsTranslationKeys,
 } from "../../../localization";
+
 const signUpValidationSchema = Yup.object({
   name: Yup.string().required(),
   email: emailRegex.required(),
@@ -45,7 +46,7 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
           field: { onChange, onBlur, value },
           fieldState: { error },
         }) => (
-          <ClearableInput
+          <BaseInput
             type="text"
             label={t(PhrasesTranslationKeys.Name)}
             error={error}
@@ -54,7 +55,6 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
             onBlur={onBlur}
             onChange={onChange}
             placeholder={t(PhrasesTranslationKeys.Name).toString()}
-            clearAriaLabel="Clear input"
           />
         )}
       />
@@ -66,7 +66,7 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
           field: { onChange, onBlur, value },
           fieldState: { error },
         }) => (
-          <ClearableInput
+          <BaseInput
             type="email"
             label={t(PhrasesTranslationKeys.Email)}
             error={error}
@@ -75,7 +75,6 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
             onBlur={onBlur}
             onChange={onChange}
             placeholder={t(PhrasesTranslationKeys.Email).toString()}
-            clearAriaLabel="Clear input"
           />
         )}
       />
@@ -90,7 +89,7 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
           <PasswordInput
             label={t(SingleWordsTranslationKeys.Password).toString()}
             togglePasswordAriaLabel={t(
-              PhrasesTranslationKeys.TogglePasswordVisibility
+              PhrasesTranslationKeys.TogglePasswordVisibility,
             ).toString()}
             value={value}
             onBlur={onBlur}
@@ -98,12 +97,22 @@ const SignUpForm: React.FunctionComponent<Props> = ({ loading, onSubmit }) => {
             placeholder={t(SingleWordsTranslationKeys.Password).toString()}
             error={error}
             helperText={t(
-              SentencesTranslationKeys.ThePasswordShouldBeFrom8Characters
+              SentencesTranslationKeys.ThePasswordShouldBeFrom8Characters,
             ).toString()}
           />
         )}
       />
-      <Button onClick={handleSubmit(onSubmit)} size="large" loading={loading}>
+      <Button
+        onClick={handleSubmit(onSubmit)}
+        size="medium"
+        loading={loading}
+        sx={{
+          marginTop: "32px !important",
+          textTransform: "uppercase",
+          color: theme.palette.primary_emphasis.high,
+          fontWeight: 600,
+        }}
+      >
         {t(PhrasesTranslationKeys.SignUp)}
       </Button>
     </Stack>

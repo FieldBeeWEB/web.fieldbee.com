@@ -2,9 +2,12 @@ import { useGetOrganizationFields } from "@fieldbee/api";
 import { InputWithIcon, Loader } from "@fieldbee/ui";
 import { Box, Grid, Stack } from "@fieldbee/ui/components";
 import { Search, TabUnselected, Upload } from "@fieldbee/ui/icons";
+import { t } from "i18next";
 import { useRouter } from "next/router";
 import * as React from "react";
+import { PhrasesTranslationKeys } from "../../localization";
 import AuthedLayout from "../authed-layout";
+import WidgetEmptyData from "../dashboard/dashboard-widgets/widget-empty-data";
 import GenerateFieldsReport from "../fields/generate-fields-report/generate-field-report";
 import FieldsPanel from "../map/fields-panel/fields-panel";
 import AddFieldWidget from "../map/widgets/add-field-widget";
@@ -42,23 +45,13 @@ const FieldsNew = () => {
   return (
     <AuthedLayout>
       <Grid container spacing={0} height="100vh">
-        <Grid
-          item
-          xs={6}
-          sx={(theme) => ({
-            borderRight: `1px solid ${theme.palette.secondary_shades[400]}`,
-          })}
-        >
+        <Grid item xs={6}>
           <Stack direction="column">
             <Stack
               direction="row"
               alignItems="center"
               spacing={0.5}
               padding={1}
-              sx={(theme) => ({
-                borderBottom: `1px solid ${theme.palette.secondary_shades[400]}`,
-                backgroundColor: theme.palette.secondary_shades[300],
-              })}
             >
               <InputWithIcon
                 fullWidth={true}
@@ -101,6 +94,12 @@ const FieldsNew = () => {
                   handleSelectGroup={handleSelectGroup}
                 />
               )}
+              {!isLoading && !isRefetching && !data && (
+                <WidgetEmptyData
+                  title={""}
+                  errorMsg={t(PhrasesTranslationKeys.NoFieldsYet).toString()}
+                />
+              )}
             </Box>
           </Stack>
         </Grid>
@@ -108,7 +107,6 @@ const FieldsNew = () => {
           item
           xs={6}
           sx={(theme) => ({
-            backgroundColor: theme.palette.secondary.main,
             height: "100vh",
             overflowY: "scroll",
           })}

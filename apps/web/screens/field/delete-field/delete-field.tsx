@@ -42,7 +42,7 @@ export default function DeleteField({ isOpened, handleClose, uris }: Props) {
         onError: () => {
           toast.error(t(PhrasesTranslationKeys.SomethingWentWrong));
         },
-      }
+      },
     );
   };
 
@@ -61,10 +61,10 @@ export default function DeleteField({ isOpened, handleClose, uris }: Props) {
               <Typography>
                 {uris.length > 1
                   ? t(
-                      SentencesTranslationKeys.AreYouSureYouWantDeleteTheseFields
+                      SentencesTranslationKeys.AreYouSureYouWantDeleteTheseFields,
                     )
                   : t(
-                      SentencesTranslationKeys.AreYouSureYouWantDeleteThisField
+                      SentencesTranslationKeys.AreYouSureYouWantDeleteThisField,
                     )}
                 ?
               </Typography>
@@ -73,7 +73,7 @@ export default function DeleteField({ isOpened, handleClose, uris }: Props) {
               direction="row"
               padding="16px"
               sx={(theme) => ({
-                borderTop: `1px solid ${theme.palette.secondary_shades[200]}`,
+                borderTop: `1px solid ${theme.palette.background.default}`,
               })}
               spacing={1}
             >

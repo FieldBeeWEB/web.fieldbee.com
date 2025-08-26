@@ -1,20 +1,20 @@
 .ol-zoom {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   width: 48px;
-  margin-left: auto;
-  margin-right: 16px;
-  margin-top: 16px;
-  background: #2a2a2a;
-  border: 1px solid #595959;
-  border-radius: 40px;
+  background: #363636;
+  border-radius: 4px;
+  box-shadow: 0px 4px 5px 0px #00000024;
 }
 .ol-zoom-in,
 .ol-zoom-out {
   background-color: transparent;
   cursor: pointer;
-  color: white;
+  color: #ffffffde;
   border: none;
   width: 48px;
   height: 48px;
@@ -23,11 +23,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 40px;
 }
-.ol-zoom-in:hover,
-.ol-zoom-out:hover {
-  background-color: #414141;
+.ol-zoom-in {
+  border-bottom: 1px solid #ffffff3d;
 }
 .ol-rotate {
   display: none;
@@ -70,6 +68,7 @@
 }
 
 .ol-attribution {
+  display: none !important;
   position: absolute;
   bottom: 16px;
   right: 16px;

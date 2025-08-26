@@ -1,26 +1,27 @@
 import { Field } from "@fieldbee/api";
 import { ExpandBadge, SelectableBox, Stack } from "@fieldbee/ui";
 import { Box, Collapse, Typography } from "@fieldbee/ui/components";
-import { t } from "i18next";
 import Image from "next/image";
 import WKTFormat from "ol/format/WKT";
 import { Vector as VectorSource } from "ol/source";
 import * as React from "react";
-import { PhrasesTranslationKeys } from "../../localization";
 import VectorLayer from "../map/layers/vector-layer";
 import MapContent from "../map/map-content";
 import {
   API_MAP_PROJECTION,
   WEB_APP_MAP_PROJECTION,
 } from "../map/utils/consts";
-import { basicLabelStyle, basicLayerStyle } from "../map/utils/map-styles";
+import {
+  defaultLabelStyle,
+  defaultSatelliteLayerStyle,
+} from "../map/utils/map-styles";
 import useMapContext from "../map/utils/use-map-context";
 
 interface Props {
   fields: Field[];
 }
 
-const style = [basicLayerStyle, basicLabelStyle];
+const style = [defaultSatelliteLayerStyle, defaultLabelStyle];
 
 const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
   const { map, handleSetCenterByExtent } = useMapContext();
@@ -91,12 +92,7 @@ const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
         </Box>
       </Collapse>
       <Box display="flex" flex={50} flexDirection="column" position="relative">
-        <ExpandBadge
-          onClick={() => handleExpanded()}
-          expanded={expanded}
-          expandedLabel={t(PhrasesTranslationKeys.HideDetails)}
-          narrowedLabel={t(PhrasesTranslationKeys.ShowDetails)}
-        />
+        <ExpandBadge onClick={() => handleExpanded()} expanded={expanded} />
         <MapContent measurementActive={false}>
           {fields.map((field) => {
             const { geom } = field.fieldGeometry;
@@ -115,7 +111,7 @@ const ImportedFieldsPreview: React.FunctionComponent<Props> = ({ fields }) => {
                   })
                 }
                 style={() => {
-                  basicLabelStyle.getText().setText(field.name);
+                  defaultLabelStyle.getText().setText(field.name);
                   return style;
                 }}
               />

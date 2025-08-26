@@ -6,8 +6,45 @@ import MeasureLayer from "./layers/measure-layer";
 import TileLayer from "./layers/tile-layer";
 import MapWithoutProvider from "./map-without-provider";
 
-const osm = () => {
-  return new olSource.OSM();
+// const road = () => {
+// 	return new olSource.XYZ({
+// 		url: `https://api.maptiler.com/maps/openstreetmap/{z}/{x}/{y}.jpg?key=${process.env.NEXT_PUBLIC_MAP_TILER_API_KEY}`,
+// 		maxZoom: 19,
+// 	})
+// }
+
+// const satellite = () => {
+// return new olSource.XYZ({
+//   url: `https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=${process.env.NEXT_PUBLIC_MAP_TILER_API_KEY}`,
+//   maxZoom: 19,
+// });
+// };
+
+// const terrain = () => {
+// 	return new olSource.XYZ({
+// 		url: `https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=${process.env.NEXT_PUBLIC_MAP_TILER_API_KEY}`,
+// 		maxZoom: 19,
+// 	})
+// }
+
+const normal = () => {
+  return new olSource.OSM({
+    maxZoom: 19,
+  });
+};
+
+const satellite = () => {
+  return new olSource.XYZ({
+    url: `https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=${process.env.NEXT_PUBLIC_MAP_TILER_API_KEY}`,
+    maxZoom: 19,
+  });
+};
+
+const dark = () => {
+  return new olSource.XYZ({
+    url: "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}.png",
+    maxZoom: 19,
+  });
 };
 
 interface Props {
@@ -31,9 +68,9 @@ const MapContent: React.FunctionComponent<Props> = ({
   return (
     <MapWithoutProvider>
       <Layers>
-        {layer === "satellite" && <TileLayer source={osm()} zIndex={0} />}
-        {layer === "road" && <TileLayer source={osm()} zIndex={0} />}
-        {layer === "terrain" && <TileLayer source={osm()} zIndex={0} />}
+        {layer === "normal" && <TileLayer source={normal()} zIndex={0} />}
+        {layer === "satellite" && <TileLayer source={satellite()} zIndex={0} />}
+        {layer === "dark" && <TileLayer source={dark()} zIndex={0} />}
         {children}
         {/* {selectedField && isEditMode && data && (
           <EditLayer field={data[0]} fieldUris={fieldUris || []} />

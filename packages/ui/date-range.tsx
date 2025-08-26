@@ -53,7 +53,7 @@ const DateRange = ({ startDate, endDate }: Props) => {
 					textAnchor='middle'
 					fontSize={28}
 					fontWeight={800}
-					fill={theme.palette.secondary_shades[200]}
+					fill={theme.palette.background.default}
 				>
 					{start.year}
 				</text>
@@ -63,7 +63,7 @@ const DateRange = ({ startDate, endDate }: Props) => {
 					dominantBaseline={'middle'}
 					textAnchor='middle'
 					fontSize={24}
-					fill={theme.palette.white[900]}
+					fill={theme.palette.surface_emphasis.high}
 				>
 					{start.day} {start.month}
 				</text>
@@ -95,7 +95,7 @@ const DateRange = ({ startDate, endDate }: Props) => {
 							textAnchor='middle'
 							fontSize={28}
 							fontWeight={800}
-							fill={theme.palette.secondary_shades[200]}
+							fill={theme.palette.background.default}
 						>
 							{end.year}
 						</text>
@@ -105,7 +105,7 @@ const DateRange = ({ startDate, endDate }: Props) => {
 							dominantBaseline={'middle'}
 							textAnchor='middle'
 							fontSize={24}
-							fill={theme.palette.white[900]}
+							fill={theme.palette.surface_emphasis.high}
 						>
 							{end.day} {end.month}
 						</text>

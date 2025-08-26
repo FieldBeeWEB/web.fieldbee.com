@@ -10,7 +10,7 @@ const SidebarWrapper = styled(MBox)(({ theme }) => ({
 	flexDirection: 'column',
 	justifyContent: 'space-between',
 	alignItems: 'center',
-	borderRight: `1px solid ${theme.palette.secondary_shades[300]}`,
+	borderRight: `1px solid ${theme.palette.background.default}`,
 	borderRightStyle: 'solid',
 }))
 

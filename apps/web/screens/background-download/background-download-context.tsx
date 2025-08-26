@@ -6,6 +6,7 @@ import {
 
 export interface BackgroundDownloadContextType {
   triggerDownload(input: TriggerDownloadInput): void;
+
   triggerMultipleDownload(input: TriggerMultipleDownloadInput): void;
 }
 
@@ -13,12 +14,12 @@ const BackgroundDownloadContext =
   React.createContext<BackgroundDownloadContextType>({
     triggerDownload: () => {
       throw new Error(
-        "You probably forgot to put <BackgroundDownloadContext.Provider>!"
+        "You probably forgot to put <BackgroundDownloadContext.Provider>!",
       );
     },
     triggerMultipleDownload: () => {
       throw new Error(
-        "You probably forgot to put <BackgroundDownloadContext.Provider>!"
+        "You probably forgot to put <BackgroundDownloadContext.Provider>!",
       );
     },
   });

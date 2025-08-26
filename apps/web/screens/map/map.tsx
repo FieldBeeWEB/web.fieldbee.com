@@ -1,10 +1,23 @@
 import { useGetOrganizationFields } from '@fieldbee/api'
-import { InputWithIcon, MapButton, MapButtons, Stack } from '@fieldbee/ui'
-import CollapsibleLayout from '@fieldbee/ui/collapsible-layout/collapsible-layout'
-import { Box } from '@fieldbee/ui/components'
-import { Search, SquareFoot } from '@fieldbee/ui/icons'
+import {
+	ExpandBadge,
+	InputWithIcon,
+	MapButton,
+	MapButtons,
+	Stack,
+	theme,
+} from '@fieldbee/ui'
+import { Box, Collapse, Typography } from '@fieldbee/ui/components'
+import MeasurementIcon from '@fieldbee/ui/custom-icons/MeasurementIcon'
+import { MyLocationOutlined, Search } from '@fieldbee/ui/icons'
+import { t } from 'i18next'
 import * as React from 'react'
+import {
+	PhrasesTranslationKeys,
+	SingleWordsTranslationKeys,
+} from '../../localization'
 import AuthedLayout from '../authed-layout'
+import WidgetEmptyData from '../dashboard/dashboard-widgets/widget-empty-data'
 import FiltersModal from '../fields-new/filters-modal/filters-modal'
 import FieldsLayer from './fields-layer/fields-layers'
 import FieldsPanel from './fields-panel/fields-panel'
@@ -24,67 +37,120 @@ export default function Map() {
 		setMeasurementActive(p => !p)
 	}, [])
 
+	const [expanded, setExpanded] = React.useState<boolean>(false)
+	const handleExpanded = React.useCallback(() => {
+		setExpanded(p => !p)
+	}, [])
+
 	return (
 		<AuthedLayout>
 			<MapProvider>
-				<CollapsibleLayout
-					expandedLabel='Hide fields'
-					narrowedLabel='Show fields'
-					leftComponent={
-						<>
-							<Stack
-								direction='row'
-								alignItems='center'
-								spacing={0.5}
-								padding={1}
-								sx={theme => ({
-									borderBottom: `1px solid ${theme.palette.secondary_shades[400]}`,
-									backgroundColor: theme.palette.secondary_shades[300],
-								})}
+				<Stack spacing={0} height='calc(100vh - 65px)' position='relative'>
+					<Stack
+						display='flex'
+						direction='column'
+						position='absolute'
+						width='400px'
+						bgcolor={theme.palette.elevation_overlay['01dp']}
+						zIndex={10}
+						spacing={0}
+					>
+						<Stack
+							display='flex'
+							direction='row'
+							alignItems='center'
+							justifyContent='space-between'
+							spacing={0}
+							padding={2}
+							paddingBottom={0}
+						>
+							<Typography
+								variant='h6'
+								color={theme.palette.surface_emphasis.high}
 							>
-								<InputWithIcon
-									fullWidth={true}
-									placeholder='Search'
-									startAdornment={<Search />}
-									value={searchTerm}
-									onChange={e => setSearchTerm(e.target.value)}
-								/>
-
-								<Box
-									sx={{
-										marginX: '12px',
-									}}
-								>
-									<FiltersModal />
-								</Box>
-							</Stack>
-							<FieldsPanel searchTerm={searchTerm} />
-						</>
-					}
-					rightComponent={
-						<>
-							<MapButtons>
-								<MapButton
-									active={measurementActive}
-									onClick={() => handleMeasurement()}
-								>
-									<SquareFoot />
-								</MapButton>
-								<LayerSelectorWidget />
-							</MapButtons>
-
+								{t(SingleWordsTranslationKeys.Fields).toString()}
+							</Typography>
 							<AddFieldWidget />
-							<MapContent measurementActive={measurementActive}>
-								{organizationFieldsData && (
-									<FieldsLayer
-										fieldUris={organizationFieldsData.map(x => x.uri)}
-										measurementActive={measurementActive}
-									/>
+						</Stack>
+						<Collapse in={expanded} orientation='vertical'>
+							<Stack
+								direction='column'
+								height='calc(100vh - 65px - 92px)'
+								spacing={0}
+							>
+								{organizationFieldsData ? (
+									<>
+										<Stack
+											direction='row'
+											alignItems='center'
+											spacing={0.5}
+											padding={2}
+										>
+											<InputWithIcon
+												fullWidth={true}
+												placeholder='Search'
+												startAdornment={
+													<Search
+														sx={{ width: '32px', height: '32px' }}
+														fill={theme.palette.surface_emphasis.medium}
+													/>
+												}
+												value={searchTerm}
+												onChange={e => setSearchTerm(e.target.value)}
+											/>
+
+											<Box
+												sx={{
+													marginX: '12px',
+												}}
+											>
+												<FiltersModal />
+											</Box>
+										</Stack>
+										<FieldsPanel searchTerm={searchTerm} />
+									</>
+								) : (
+									<Stack marginY='auto'>
+										<WidgetEmptyData
+											title={''}
+											errorMsg={t(
+												PhrasesTranslationKeys.NoFieldsYet
+											).toString()}
+										/>
+									</Stack>
 								)}
-							</MapContent>
-						</>
-					}
-				/>
+							</Stack>
+						</Collapse>
+
+						<ExpandBadge onClick={() => handleExpanded()} expanded={expanded} />
+					</Stack>
+
+					<MapButtons>
+						<MapButton active={measurementActive} onClick={handleMeasurement}>
+							<MeasurementIcon />
+						</MapButton>
+						<LayerSelectorWidget />
+					</MapButtons>
+
+					<MapButton
+						position='absolute'
+						right='24px'
+						bottom='137px'
+						zIndex='10'
+						onClick={() => console.log('Click')}
+					>
+						<MyLocationOutlined />
+					</MapButton>
+
+					<MapContent measurementActive={measurementActive}>
+						{organizationFieldsData && (
+							<FieldsLayer
+								fieldUris={organizationFieldsData.map(x => x.uri)}
+								measurementActive={measurementActive}
+							/>
+						)}
+					</MapContent>
+				</Stack>
 			</MapProvider>
 		</AuthedLayout>
 	)
