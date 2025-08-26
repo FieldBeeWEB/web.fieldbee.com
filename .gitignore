@@ -53,3 +53,6 @@ Thumbs.db
 
 # Apps .next
 /apps/docs/.next
+
+# ENV files
+.env*
